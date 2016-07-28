@@ -1,0 +1,102 @@
+= Cheatsheets
+
+[[FindOptions]]
+== FindOptions
+
+++++
+ Options used to configure find operations.
+++++
+'''
+
+[cols=">25%,^25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[fields]]`fields`|`Json object`|
++++
+Set the fields
++++
+|[[limit]]`limit`|`Number (int)`|
++++
+Set the limit
++++
+|[[skip]]`skip`|`Number (int)`|
++++
+Set the skip
++++
+|[[sort]]`sort`|`Json object`|
++++
+Set the sort document
++++
+|===
+
+[[MongoClientDeleteResult]]
+== MongoClientDeleteResult
+
+++++
+ Result propagated from mongodb driver delete result.
+++++
+'''
+
+[cols=">25%,^25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[removedCount]]`removedCount`|`Number (long)`|
++++
+Get the number of removed documents
++++
+|===
+
+[[MongoClientUpdateResult]]
+== MongoClientUpdateResult
+
+++++
+ Result propagated from mongodb driver update result.
+++++
+'''
+
+[cols=">25%,^25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[docMatched]]`docMatched`|`Number (long)`|
++++
+Get the number of documents that're matched
++++
+|[[docModified]]`docModified`|`Number (long)`|
++++
+Get the number of documents that're modified
++++
+|[[docUpsertedId]]`docUpsertedId`|`Json object`|
++++
+Get the document id that's upserted
++++
+|===
+
+[[UpdateOptions]]
+== UpdateOptions
+
+++++
+ Options for configuring updates.
+++++
+'''
+
+[cols=">25%,^25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[multi]]`multi`|`Boolean`|
++++
+Set whether multi is enabled
++++
+|[[upsert]]`upsert`|`Boolean`|
++++
+Set whether upsert is enabled
++++
+|[[writeOption]]`writeOption`|`link:enums.html#WriteOption[WriteOption]`|
++++
+Set the write option
++++
+|===
+

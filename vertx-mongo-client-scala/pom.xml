@@ -12,11 +12,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.vertx</groupId>
-  <artifactId>vertx-sql-common-scala_2.11</artifactId>
+  <artifactId>vertx-mongo-client-scala_2.11</artifactId>
   <version>3.4.0-SNAPSHOT</version>
 
   <properties>
-    <vertx-module>vertx-sql-common</vertx-module>
+    <vertx-module>vertx-mongo-client</vertx-module>
     <asciidoc.dir>${project.basedir}/src/main/asciidoc</asciidoc.dir>
   </properties>
 
@@ -67,12 +67,12 @@
         <configuration>
           <instructions>
             <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-            <Export-Package>io.vertx.scala.ext.sql;version=${project.version}
+            <Export-Package>io.vertx.ext.scala.mongo;version=${project.version}
             </Export-Package>
             <Import-Package>
               javax.sql,
               io.vertx.core*,
-              io.vertx.ext.sql*,
+              io.vertx.ext.mongo*,
               *;resolution:=optional</Import-Package>
             <Include-Resource>{maven-resources}</Include-Resource>
           </instructions>

@@ -91,7 +91,7 @@
         <configuration>
           <instructions>
             <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-            <Export-Package>io.vertx.ext.scala.sql;version=${project.version}
+            <Export-Package>io.vertx.scala.ext.jdbc;version=${project.version}
             </Export-Package>
             <Import-Package>
               javax.sql,

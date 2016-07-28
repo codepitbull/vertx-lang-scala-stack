@@ -297,5 +297,6 @@
   <modules>
     <module>vertx-sql-common-scala</module>
     <module>vertx-jdbc-client-scala</module>
+    <module>vertx-mongo-client-scala</module>
   </modules>
 </project>
