@@ -69,10 +69,6 @@
       <optional>true</optional>
     </dependency>
   </dependencies>
-
-  <modules>
-    <module>vertx-sql-common-scala</module>
-  </modules>
   <build>
     <pluginManagement>
       <plugins>
@@ -297,4 +293,9 @@
       </plugins>
     </pluginManagement>
   </build>
+
+  <modules>
+    <module>vertx-sql-common-scala</module>
+    <module>vertx-jdbc-client-scala</module>
+  </modules>
 </project>
