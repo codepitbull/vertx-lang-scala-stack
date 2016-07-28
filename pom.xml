@@ -300,5 +300,11 @@
     <module>vertx-mongo-client-scala</module>
     <module>vertx-mongo-service-scala</module>
     <module>vertx-auth-common-scala</module>
+    <module>vertx-auth-shiro-scala</module>
+    <module>vertx-auth-oauth2-scala</module>
+    <module>vertx-auth-mongo-scala</module>
+    <module>vertx-auth-jwt-scala</module>
+    <module>vertx-auth-jdbc-scala</module>
+    <module>vertx-web-scala</module>
   </modules>
 </project>
