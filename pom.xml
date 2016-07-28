@@ -299,5 +299,6 @@
     <module>vertx-jdbc-client-scala</module>
     <module>vertx-mongo-client-scala</module>
     <module>vertx-mongo-service-scala</module>
+    <module>vertx-auth-common-scala</module>
   </modules>
 </project>
