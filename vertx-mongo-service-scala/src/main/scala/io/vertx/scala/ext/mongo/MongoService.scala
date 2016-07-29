@@ -24,6 +24,7 @@ import io.vertx.ext.mongo.MongoClientDeleteResult
 import io.vertx.ext.mongo.WriteOption
 import io.vertx.scala.core.Vertx
 import io.vertx.core.json.JsonArray
+import io.vertx.ext.mongo.IndexOptions
 import io.vertx.ext.mongo.FindOptions
 import io.vertx.core.json.JsonObject
 import io.vertx.core.Handler
@@ -179,6 +180,26 @@ class MongoService(private val _asJava: io.vertx.ext.mongo.MongoService) {
 
   def dropCollection(collection: String, resultHandler: io.vertx.core.AsyncResult[java.lang.Void] => Unit): io.vertx.scala.ext.mongo.MongoService = {
     _asJava.dropCollection(collection, funcToHandler(resultHandler))
+    this
+  }
+
+  def createIndex(collection: String, key: io.vertx.core.json.JsonObject, resultHandler: io.vertx.core.AsyncResult[java.lang.Void] => Unit): io.vertx.scala.ext.mongo.MongoService = {
+    _asJava.createIndex(collection, key, funcToHandler(resultHandler))
+    this
+  }
+
+  def createIndexWithOptions(collection: String, key: io.vertx.core.json.JsonObject, options: io.vertx.ext.mongo.IndexOptions, resultHandler: io.vertx.core.AsyncResult[java.lang.Void] => Unit): io.vertx.scala.ext.mongo.MongoService = {
+    _asJava.createIndexWithOptions(collection, key, options, funcToHandler(resultHandler))
+    this
+  }
+
+  def listIndexes(collection: String, resultHandler: io.vertx.core.AsyncResult[io.vertx.core.json.JsonArray] => Unit): io.vertx.scala.ext.mongo.MongoService = {
+    _asJava.listIndexes(collection, funcToHandler(resultHandler))
+    this
+  }
+
+  def dropIndex(collection: String, indexName: String, resultHandler: io.vertx.core.AsyncResult[java.lang.Void] => Unit): io.vertx.scala.ext.mongo.MongoService = {
+    _asJava.dropIndex(collection, indexName, funcToHandler(resultHandler))
     this
   }
 

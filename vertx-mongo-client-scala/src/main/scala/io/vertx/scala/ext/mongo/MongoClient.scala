@@ -24,6 +24,7 @@ import io.vertx.ext.mongo.MongoClientDeleteResult
 import io.vertx.ext.mongo.WriteOption
 import io.vertx.scala.core.Vertx
 import io.vertx.core.json.JsonArray
+import io.vertx.ext.mongo.IndexOptions
 import io.vertx.ext.mongo.FindOptions
 import io.vertx.core.json.JsonObject
 import io.vertx.core.Handler
@@ -388,6 +389,50 @@ class MongoClient(private val _asJava: io.vertx.ext.mongo.MongoClient) {
     */
   def dropCollection(collection: String, resultHandler: io.vertx.core.AsyncResult[java.lang.Void] => Unit): io.vertx.scala.ext.mongo.MongoClient = {
     _asJava.dropCollection(collection, funcToHandler(resultHandler))
+    this
+  }
+
+  /**
+    * Creates an index.
+    * @param collection the collection
+    * @param key A document that contains the field and value pairs where the field is the index key and the value describes the type of index for that field. For an ascending index on a field, specify a value of 1; for descending index, specify a value of -1.
+    * @param resultHandler will be called when complete
+    */
+  def createIndex(collection: String, key: io.vertx.core.json.JsonObject, resultHandler: io.vertx.core.AsyncResult[java.lang.Void] => Unit): io.vertx.scala.ext.mongo.MongoClient = {
+    _asJava.createIndex(collection, key, funcToHandler(resultHandler))
+    this
+  }
+
+  /**
+    * Creates an index.
+    * @param collection the collection
+    * @param key A document that contains the field and value pairs where the field is the index key and the value describes the type of index for that field. For an ascending index on a field, specify a value of 1; for descending index, specify a value of -1.
+    * @param options the options for the indexsee <a href="../../../../../../../cheatsheet/IndexOptions.html">IndexOptions</a>
+    * @param resultHandler will be called when complete
+    */
+  def createIndexWithOptions(collection: String, key: io.vertx.core.json.JsonObject, options: io.vertx.ext.mongo.IndexOptions, resultHandler: io.vertx.core.AsyncResult[java.lang.Void] => Unit): io.vertx.scala.ext.mongo.MongoClient = {
+    _asJava.createIndexWithOptions(collection, key, options, funcToHandler(resultHandler))
+    this
+  }
+
+  /**
+    * Get all the indexes in this collection.
+    * @param collection the collection
+    * @param resultHandler will be called when complete
+    */
+  def listIndexes(collection: String, resultHandler: io.vertx.core.AsyncResult[io.vertx.core.json.JsonArray] => Unit): io.vertx.scala.ext.mongo.MongoClient = {
+    _asJava.listIndexes(collection, funcToHandler(resultHandler))
+    this
+  }
+
+  /**
+    * Drops the index given its name.
+    * @param collection the collection
+    * @param indexName the name of the index to remove
+    * @param resultHandler will be called when complete
+    */
+  def dropIndex(collection: String, indexName: String, resultHandler: io.vertx.core.AsyncResult[java.lang.Void] => Unit): io.vertx.scala.ext.mongo.MongoClient = {
+    _asJava.dropIndex(collection, indexName, funcToHandler(resultHandler))
     this
   }
 

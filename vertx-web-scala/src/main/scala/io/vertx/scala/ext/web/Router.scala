@@ -358,8 +358,8 @@ class Router(private val _asJava: io.vertx.ext.web.Router) {
     * @param exceptionHandler the exception handler
     * @return a reference to this, so the API can be used fluently
     */
-  def exceptionHandler(exceptionHandler: scala.Option[Throwable => Unit]): io.vertx.scala.ext.web.Router = {
-    _asJava.exceptionHandler(funcToMappedHandler[java.lang.Throwable, Throwable](x => x)((if(exceptionHandler.isDefined) exceptionHandler.get else null)))
+  def exceptionHandler(exceptionHandler: Throwable => Unit): io.vertx.scala.ext.web.Router = {
+    _asJava.exceptionHandler(funcToMappedHandler[java.lang.Throwable, Throwable](x => x)(exceptionHandler))
     this
   }
 
