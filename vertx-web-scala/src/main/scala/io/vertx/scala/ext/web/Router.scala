@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.web;
+package io.vertx.scala.ext.web
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 import io.vertx.scala.core.http.HttpServerRequest
 import io.vertx.core.http.HttpMethod
 import io.vertx.scala.core.Vertx
@@ -328,8 +327,8 @@ class Router(private val _asJava: io.vertx.ext.web.Router) {
   /**
     * @return a list of all the routes on this router
     */
-  def getRoutes(): List[io.vertx.scala.ext.web.Route] = {
-    _asJava.getRoutes().asScala.map(Route.apply).toList
+  def getRoutes(): scala.collection.mutable.Buffer[io.vertx.scala.ext.web.Route] = {
+    _asJava.getRoutes().asScala.map(Route.apply)
   }
 
   /**

@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.web.handler.sockjs;
+package io.vertx.scala.ext.web.handler.sockjs
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 import io.vertx.scala.ext.web.Session
 import io.vertx.scala.ext.auth.User
 import io.vertx.scala.core.buffer.Buffer
@@ -151,14 +150,14 @@ class SockJSSocket(private val _asJava: io.vertx.ext.web.handler.sockjs.SockJSSo
     * @return the Vert.x-Web session corresponding to this socket
     */
   def webSession(): scala.Option[io.vertx.scala.ext.web.Session] = {
-    scala.Option(    Session.apply(_asJava.webSession()))
+        scala.Option(Session.apply(_asJava.webSession()))
   }
 
   /**
-    *  @return the Vert.x-Web user corresponding to this socket
+    * @return the Vert.x-Web user corresponding to this socket
     */
   def webUser(): scala.Option[io.vertx.scala.ext.auth.User] = {
-    scala.Option(    User.apply(_asJava.webUser()))
+        scala.Option(User.apply(_asJava.webUser()))
   }
 
 }

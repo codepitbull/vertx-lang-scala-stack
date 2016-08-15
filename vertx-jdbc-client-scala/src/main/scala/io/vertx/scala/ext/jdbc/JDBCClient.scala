@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.jdbc;
+package io.vertx.scala.ext.jdbc
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 import io.vertx.scala.core.Vertx
 import io.vertx.scala.ext.sql.SQLConnection
 import io.vertx.core.json.JsonObject
@@ -37,8 +36,8 @@ class JDBCClient(private val _asJava: io.vertx.ext.jdbc.JDBCClient) {
     * to close the connection when you are done, so it is returned to the pool.
     * @param handler the handler which is called when the <code>JdbcConnection</code> object is ready for use.
     */
-  def getConnection(handler: io.vertx.core.AsyncResult[io.vertx.ext.sql.SQLConnection] => Unit): io.vertx.scala.ext.jdbc.JDBCClient = {
-    _asJava.getConnection(funcToHandler(handler))
+  def getConnection(handler: io.vertx.core.AsyncResult [io.vertx.scala.ext.sql.SQLConnection] => Unit): io.vertx.scala.ext.jdbc.JDBCClient = {
+    _asJava.getConnection(funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.ext.sql.SQLConnection], io.vertx.core.AsyncResult [io.vertx.scala.ext.sql.SQLConnection]](x => io.vertx.lang.scala.AsyncResult[io.vertx.ext.sql.SQLConnection, io.vertx.scala.ext.sql.SQLConnection](x,(x => if (x == null) null else SQLConnection.apply(x))))(handler))
     this
   }
 

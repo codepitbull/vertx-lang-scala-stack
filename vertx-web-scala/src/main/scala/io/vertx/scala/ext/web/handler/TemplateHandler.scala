@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.web.handler;
+package io.vertx.scala.ext.web.handler
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 import io.vertx.scala.ext.web.templ.TemplateEngine
 import io.vertx.scala.ext.web.RoutingContext
 import io.vertx.core.Handler

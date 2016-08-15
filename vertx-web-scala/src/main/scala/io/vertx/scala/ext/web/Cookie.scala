@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.web;
+package io.vertx.scala.ext.web
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 
 /**
   * Represents an HTTP Cookie.
@@ -67,10 +66,10 @@ class Cookie(private val _asJava: io.vertx.ext.web.Cookie) {
   }
 
   /**
-    * @return  the domain for the cookie
+    * @return the domain for the cookie
     */
   def getDomain(): scala.Option[String] = {
-    scala.Option(    _asJava.getDomain())
+        scala.Option(_asJava.getDomain())
   }
 
   /**
@@ -87,7 +86,7 @@ class Cookie(private val _asJava: io.vertx.ext.web.Cookie) {
     * @return the path for this cookie
     */
   def getPath(): scala.Option[String] = {
-    scala.Option(    _asJava.getPath())
+        scala.Option(_asJava.getPath())
   }
 
   /**

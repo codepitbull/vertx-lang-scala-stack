@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.web;
+package io.vertx.scala.ext.web
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 import io.vertx.core.http.HttpMethod
 import io.vertx.core.Handler
 
@@ -195,7 +194,7 @@ class Route(private val _asJava: io.vertx.ext.web.Route) {
     * @return the path prefix (if any) for this route
     */
   def getPath(): scala.Option[String] = {
-    scala.Option(    _asJava.getPath())
+        scala.Option(_asJava.getPath())
   }
 
 }

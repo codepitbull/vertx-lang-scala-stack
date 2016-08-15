@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.auth.mongo;
+package io.vertx.scala.ext.auth.mongo
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 import io.vertx.scala.ext.mongo.MongoClient
 import io.vertx.core.json.JsonObject
 import io.vertx.core.Handler
@@ -212,8 +211,8 @@ class MongoAuth(private val _asJava: io.vertx.ext.auth.mongo.MongoAuth) {
     * @param permissions a list of permissions to be set
     * @param resultHandler the ResultHandler will be provided with the id of the generated record
     */
-  def insertUser(username: String, password: String, roles: List[String], permissions: List[String], resultHandler: io.vertx.core.AsyncResult[java.lang.String] => Unit): Unit = {
-    _asJava.insertUser(username, password, roles.map(x => if(x == null) null else x:java.lang.String).asJava, permissions.map(x => if(x == null) null else x:java.lang.String).asJava, funcToHandler(resultHandler))
+  def insertUserWithHandler(username: String, password: String, roles: scala.collection.mutable.Buffer[String], permissions: scala.collection.mutable.Buffer[String])( resultHandler: io.vertx.core.AsyncResult [String] => Unit): Unit = {
+    _asJava.insertUser(username, password, roles.map(x => if(x == null) null else x:java.lang.String).asJava, permissions.map(x => if(x == null) null else x:java.lang.String).asJava, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.String], io.vertx.core.AsyncResult [String]](x => io.vertx.lang.scala.AsyncResult[java.lang.String, String](x,(x => x)))(resultHandler))
   }
 
 }

@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.web.handler.sockjs;
+package io.vertx.scala.ext.web.handler.sockjs
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 import io.vertx.ext.web.handler.sockjs.BridgeEventType
 import io.vertx.core.json.JsonObject
 import io.vertx.scala.core.Future
@@ -34,7 +33,7 @@ class BridgeEvent(private val _asJava: io.vertx.ext.web.handler.sockjs.BridgeEve
   def asJava: io.vertx.ext.web.handler.sockjs.BridgeEvent = _asJava
 
   /**
-    * @return  the type of the event
+    * @return the type of the event
     */
   def `type`(): io.vertx.ext.web.handler.sockjs.BridgeEventType = {
     if(cached_0 == null) {

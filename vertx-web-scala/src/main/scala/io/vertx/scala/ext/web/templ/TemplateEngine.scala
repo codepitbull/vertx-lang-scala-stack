@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.web.templ;
+package io.vertx.scala.ext.web.templ
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 import io.vertx.scala.core.buffer.Buffer
 import io.vertx.scala.ext.web.RoutingContext
 import io.vertx.core.Handler
@@ -39,8 +38,8 @@ class TemplateEngine(private val _asJava: io.vertx.ext.web.templ.TemplateEngine)
     * @param templateFileName the template file name to use
     * @param handler the handler that will be called with a result containing the buffer or a failure.
     */
-  def render(context: io.vertx.scala.ext.web.RoutingContext, templateFileName: String, handler: io.vertx.core.AsyncResult[io.vertx.core.buffer.Buffer] => Unit): Unit = {
-    _asJava.render(context.asJava.asInstanceOf[io.vertx.ext.web.RoutingContext], templateFileName, funcToHandler(handler))
+  def renderWithHandler(context: io.vertx.scala.ext.web.RoutingContext, templateFileName: String)( handler: io.vertx.core.AsyncResult [io.vertx.scala.core.buffer.Buffer] => Unit): Unit = {
+    _asJava.render(context.asJava.asInstanceOf[io.vertx.ext.web.RoutingContext], templateFileName, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.core.buffer.Buffer], io.vertx.core.AsyncResult [io.vertx.scala.core.buffer.Buffer]](x => io.vertx.lang.scala.AsyncResult[io.vertx.core.buffer.Buffer, io.vertx.scala.core.buffer.Buffer](x,(x => if (x == null) null else Buffer.apply(x))))(handler))
   }
 
 }

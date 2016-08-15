@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.auth.jdbc;
+package io.vertx.scala.ext.auth.jdbc
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 import io.vertx.scala.ext.jdbc.JDBCClient
 import io.vertx.scala.ext.auth.AuthProvider
 

@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.auth.jwt;
+package io.vertx.scala.ext.auth.jwt
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 import io.vertx.scala.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.ext.auth.jwt.JWTOptions
@@ -38,8 +37,8 @@ class JWTAuth(private val _asJava: io.vertx.ext.auth.jwt.JWTAuth) {
     * @param options extra options for the generationsee <a href="../../../../../../../../cheatsheet/JWTOptions.html">JWTOptions</a>
     * @return JWT encoded token
     */
-  def generateToken(claims: io.vertx.core.json.JsonObject, options: io.vertx.ext.auth.jwt.JWTOptions): String = {
-    _asJava.generateToken(claims, options)
+  def generateToken(claims: io.vertx.core.json.JsonObject, options: io.vertx.scala.ext.auth.jwt.JWTOptions): String = {
+    _asJava.generateToken(claims, options.asJava)
   }
 
 }

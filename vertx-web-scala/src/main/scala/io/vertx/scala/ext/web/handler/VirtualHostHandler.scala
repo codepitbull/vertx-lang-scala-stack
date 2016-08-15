@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.web.handler;
+package io.vertx.scala.ext.web.handler
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 import io.vertx.scala.ext.web.RoutingContext
 import io.vertx.core.Handler
 
@@ -40,7 +39,7 @@ object VirtualHostHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.VirtualHostHandler): io.vertx.scala.ext.web.handler.VirtualHostHandler =
     new io.vertx.scala.ext.web.handler.VirtualHostHandler(_asJava)
-  def create(hostname: String, handler: io.vertx.scala.ext.web.RoutingContext => Unit): io.vertx.scala.ext.web.handler.VirtualHostHandler = {
+  def createWithHandler(hostname: String)( handler: io.vertx.scala.ext.web.RoutingContext => Unit): io.vertx.scala.ext.web.handler.VirtualHostHandler = {
     VirtualHostHandler.apply(io.vertx.ext.web.handler.VirtualHostHandler.create(hostname, funcToMappedHandler(RoutingContext.apply)(handler)))
   }
 }

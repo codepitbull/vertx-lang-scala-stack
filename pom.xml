@@ -240,11 +240,10 @@
           </executions>
         </plugin>
         <plugin>
-          <groupId>de.codepitbull</groupId>
+          <groupId>net.alchim31.maven</groupId>
           <artifactId>scala-maven-plugin</artifactId>
-          <version>3.2.3</version>
+          <version>3.2.2</version>
           <configuration>
-            <outputInClasspath>true</outputInClasspath>
             <sendJavaToScalac>false</sendJavaToScalac>
             <args>
               <arg>-target:jvm-1.8</arg>
@@ -306,5 +305,6 @@
     <module>vertx-auth-jwt-scala</module>
     <module>vertx-auth-jdbc-scala</module>
     <module>vertx-web-scala</module>
+    <module>vertx-mysql-postgresql-client-scala</module>
   </modules>
 </project>

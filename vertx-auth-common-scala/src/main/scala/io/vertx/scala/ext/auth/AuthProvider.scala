@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.auth;
+package io.vertx.scala.ext.auth
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 import io.vertx.core.json.JsonObject
 import io.vertx.core.Handler
 
@@ -50,8 +49,8 @@ class AuthProvider(private val _asJava: io.vertx.ext.auth.AuthProvider) {
     * @param authInfo The auth information
     * @param resultHandler The result handler
     */
-  def authenticate(authInfo: io.vertx.core.json.JsonObject, resultHandler: io.vertx.core.AsyncResult[io.vertx.ext.auth.User] => Unit): Unit = {
-    _asJava.authenticate(authInfo, funcToHandler(resultHandler))
+  def authenticateWithHandler(authInfo: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [io.vertx.scala.ext.auth.User] => Unit): Unit = {
+    _asJava.authenticate(authInfo, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.ext.auth.User], io.vertx.core.AsyncResult [io.vertx.scala.ext.auth.User]](x => io.vertx.lang.scala.AsyncResult[io.vertx.ext.auth.User, io.vertx.scala.ext.auth.User](x,(x => if (x == null) null else User.apply(x))))(resultHandler))
   }
 
 }

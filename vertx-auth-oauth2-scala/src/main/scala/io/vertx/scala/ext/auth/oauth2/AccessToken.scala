@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.auth.oauth2;
+package io.vertx.scala.ext.auth.oauth2
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 import io.vertx.scala.ext.auth.User
 import io.vertx.core.Handler
 
@@ -41,8 +40,8 @@ class AccessToken(private val _asJava: io.vertx.ext.auth.oauth2.AccessToken) {
     * Refresh the access token
     * @param callback - The callback function returning the results.
     */
-  def refresh(callback: io.vertx.core.AsyncResult[java.lang.Void] => Unit): io.vertx.scala.ext.auth.oauth2.AccessToken = {
-    _asJava.refresh(funcToHandler(callback))
+  def refresh(callback: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.auth.oauth2.AccessToken = {
+    _asJava.refresh(funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(callback))
     this
   }
 
@@ -51,8 +50,8 @@ class AccessToken(private val _asJava: io.vertx.ext.auth.oauth2.AccessToken) {
     * @param token_type - A String containing the type of token to revoke. Should be either "access_token" or "refresh_token".
     * @param callback - The callback function returning the results.
     */
-  def revoke(token_type: String, callback: io.vertx.core.AsyncResult[java.lang.Void] => Unit): io.vertx.scala.ext.auth.oauth2.AccessToken = {
-    _asJava.revoke(token_type, funcToHandler(callback))
+  def revokeWithHandler(token_type: String)( callback: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.auth.oauth2.AccessToken = {
+    _asJava.revoke(token_type, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(callback))
     this
   }
 
@@ -61,8 +60,8 @@ class AccessToken(private val _asJava: io.vertx.ext.auth.oauth2.AccessToken) {
     * available on all providers.
     * @param callback - The callback function returning the results.
     */
-  def logout(callback: io.vertx.core.AsyncResult[java.lang.Void] => Unit): io.vertx.scala.ext.auth.oauth2.AccessToken = {
-    _asJava.logout(funcToHandler(callback))
+  def logout(callback: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.auth.oauth2.AccessToken = {
+    _asJava.logout(funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(callback))
     this
   }
 

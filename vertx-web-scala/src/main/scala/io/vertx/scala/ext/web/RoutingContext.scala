@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.web;
+package io.vertx.scala.ext.web
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 import io.vertx.scala.core.http.HttpServerRequest
 import io.vertx.scala.core.Vertx
 import io.vertx.core.json.JsonArray
@@ -125,18 +124,17 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
   }
 
   /**
-    * @return the Vert.x instance associated to the initiating [[io.vertx.scala.ext.web.Router]] for this context
+    * @return the Vert.x instance associated to the initiating [[Router]] for this context
     */
   def vertx(): io.vertx.scala.core.Vertx = {
     Vertx.apply(_asJava.vertx())
   }
 
   /**
-    * @return the mount point for this router. It will be null for a top level router. For a sub-router it will be the path
-    * at which the subrouter was mounted.
+    * @return the mount point for this router. It will be null for a top level router. For a sub-router it will be the path at which the subrouter was mounted.
     */
   def mountPoint(): scala.Option[String] = {
-    scala.Option(    _asJava.mountPoint())
+        scala.Option(_asJava.mountPoint())
   }
 
   /**
@@ -171,7 +169,7 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
     * @return the cookie
     */
   def getCookie(name: String): scala.Option[io.vertx.scala.ext.web.Cookie] = {
-    scala.Option(    Cookie.apply(_asJava.getCookie(name)))
+        scala.Option(Cookie.apply(_asJava.getCookie(name)))
   }
 
   /**
@@ -192,31 +190,28 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
     * @return the cookie, if it existed, or null
     */
   def removeCookie(name: String): scala.Option[io.vertx.scala.ext.web.Cookie] = {
-    scala.Option(    Cookie.apply(_asJava.removeCookie(name)))
+        scala.Option(Cookie.apply(_asJava.removeCookie(name)))
   }
 
   /**
-    * @return the number of cookies. The context must have first been routed to a [[io.vertx.scala.ext.web.handler.CookieHandler]]
-    * for this to work.
+    * @return the number of cookies. The context must have first been routed to a [[io.vertx.scala.ext.web.handler.CookieHandler]] for this to work.
     */
   def cookieCount(): Int = {
     _asJava.cookieCount()
   }
 
   /**
-    * @return a set of all the cookies. The context must have first been routed to a [[io.vertx.scala.ext.web.handler.CookieHandler]]
-    * for this to be populated.
+    * @return a set of all the cookies. The context must have first been routed to a [[io.vertx.scala.ext.web.handler.CookieHandler]] for this to be populated.
     */
   def cookies(): Set[io.vertx.scala.ext.web.Cookie] = {
     _asJava.cookies().asScala.map(Cookie.apply).toSet
   }
 
   /**
-    * @return  the entire HTTP request body as a string, assuming UTF-8 encoding. The context must have first been routed to a
-    * [[io.vertx.scala.ext.web.handler.BodyHandler]] for this to be populated.
+    * @return the entire HTTP request body as a string, assuming UTF-8 encoding. The context must have first been routed to a [[io.vertx.scala.ext.web.handler.BodyHandler]] for this to be populated.
     */
   def getBodyAsString(): scala.Option[String] = {
-    scala.Option(    _asJava.getBodyAsString())
+        scala.Option(_asJava.getBodyAsString())
   }
 
   /**
@@ -226,36 +221,32 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
     * @return the body
     */
   def getBodyAsString(encoding: String): scala.Option[String] = {
-    scala.Option(    _asJava.getBodyAsString(encoding))
+        scala.Option(_asJava.getBodyAsString(encoding))
   }
 
   /**
-    * @return Get the entire HTTP request body as a . The context must have first been routed to a
-    * [[io.vertx.scala.ext.web.handler.BodyHandler]] for this to be populated.
+    * @return Get the entire HTTP request body as a [[JsonObject]]. The context must have first been routed to a [[io.vertx.scala.ext.web.handler.BodyHandler]] for this to be populated.
     */
   def getBodyAsJson(): scala.Option[io.vertx.core.json.JsonObject] = {
-    scala.Option(    _asJava.getBodyAsJson())
+        scala.Option(_asJava.getBodyAsJson())
   }
 
   /**
-    * @return Get the entire HTTP request body as a . The context must have first been routed to a
-    * [[io.vertx.scala.ext.web.handler.BodyHandler]] for this to be populated.
+    * @return Get the entire HTTP request body as a [[JsonArray]]. The context must have first been routed to a [[io.vertx.scala.ext.web.handler.BodyHandler]] for this to be populated.
     */
   def getBodyAsJsonArray(): scala.Option[io.vertx.core.json.JsonArray] = {
-    scala.Option(    _asJava.getBodyAsJsonArray())
+        scala.Option(_asJava.getBodyAsJsonArray())
   }
 
   /**
-    * @return Get the entire HTTP request body as a . The context must have first been routed to a
-    * [[io.vertx.scala.ext.web.handler.BodyHandler]] for this to be populated.
+    * @return Get the entire HTTP request body as a [[Buffer]]. The context must have first been routed to a [[io.vertx.scala.ext.web.handler.BodyHandler]] for this to be populated.
     */
   def getBody(): scala.Option[io.vertx.scala.core.buffer.Buffer] = {
-    scala.Option(    Buffer.apply(_asJava.getBody()))
+        scala.Option(Buffer.apply(_asJava.getBody()))
   }
 
   /**
-    * @return a set of fileuploads (if any) for the request. The context must have first been routed to a
-    * [[io.vertx.scala.ext.web.handler.BodyHandler]] for this to work.
+    * @return a set of fileuploads (if any) for the request. The context must have first been routed to a [[io.vertx.scala.ext.web.handler.BodyHandler]] for this to work.
     */
   def fileUploads(): Set[io.vertx.scala.ext.web.FileUpload] = {
     _asJava.fileUploads().asScala.map(FileUpload.apply).toSet
@@ -268,7 +259,7 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
     * @return the session.
     */
   def session(): scala.Option[io.vertx.scala.ext.web.Session] = {
-    scala.Option(    Session.apply(_asJava.session()))
+        scala.Option(Session.apply(_asJava.session()))
   }
 
   /**
@@ -276,7 +267,7 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
     * @return the user, or null if the current user is not authenticated.
     */
   def user(): scala.Option[io.vertx.scala.ext.auth.User] = {
-    scala.Option(    User.apply(_asJava.user()))
+        scala.Option(User.apply(_asJava.user()))
   }
 
   /**
@@ -287,7 +278,7 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
     */
   def failure(): scala.Option[Throwable] = {
     if(cached_2 == null) {
-      cached_2=    scala.Option(    _asJava.failure())
+      cached_2=        scala.Option(_asJava.failure())
     }
     cached_2
   }
@@ -313,7 +304,7 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
     * @return the most acceptable content type.
     */
   def getAcceptableContentType(): scala.Option[String] = {
-    scala.Option(    _asJava.getAcceptableContentType())
+        scala.Option(_asJava.getAcceptableContentType())
   }
 
   /**
@@ -336,8 +327,10 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
   }
 
   /**
-    * Add a handler that will be called just before the response body has been completely written.
-    * This gives you a hook where you can write any extra data to the response before it has ended when it will be too late.
+    * Provides a handler that will be called after the last part of the body is written to the wire.
+    * The handler is called asynchronously of when the response has been received by the client.
+    * This provides a hook allowing you to do more operations once the request has been sent over the wire
+    * such as resource cleanup.
     * @param handler the handler
     * @return the id of the handler. This can be used if you later want to remove the handler.
     */
@@ -429,9 +422,9 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
     * match will be en-US because it was declared as first entry by the client.
     * @return the best matched locale for the request
     */
-  def acceptableLocales(): List[io.vertx.scala.ext.web.Locale] = {
+  def acceptableLocales(): scala.collection.mutable.Buffer[io.vertx.scala.ext.web.Locale] = {
     if(cached_4 == null) {
-      cached_4=    _asJava.acceptableLocales().asScala.map(Locale.apply).toList
+      cached_4=    _asJava.acceptableLocales().asScala.map(Locale.apply)
     }
     cached_4
   }
@@ -459,14 +452,14 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
     * @return the actual value of the parameter or null if it doesn't exist
     */
   def pathParam(name: String): scala.Option[String] = {
-    scala.Option(    _asJava.pathParam(name))
+        scala.Option(_asJava.pathParam(name))
   }
 
   private var cached_0: io.vertx.scala.core.http.HttpServerRequest = _
   private var cached_1: io.vertx.scala.core.http.HttpServerResponse = _
   private var cached_2: scala.Option[Throwable] = _
   private var cached_3: Int = _
-  private var cached_4: List[io.vertx.scala.ext.web.Locale] = _
+  private var cached_4: scala.collection.mutable.Buffer[io.vertx.scala.ext.web.Locale] = _
 }
 
 object RoutingContext {

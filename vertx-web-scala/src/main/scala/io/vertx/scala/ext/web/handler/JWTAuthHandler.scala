@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.web.handler;
+package io.vertx.scala.ext.web.handler
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 import io.vertx.scala.ext.web.RoutingContext
 import io.vertx.scala.ext.auth.jwt.JWTAuth
 
@@ -60,7 +59,7 @@ class JWTAuthHandler(private val _asJava: io.vertx.ext.web.handler.JWTAuthHandle
     * @param audience the audience list
     * @return a reference to this for fluency
     */
-  def setAudience(audience: List[String]): io.vertx.scala.ext.web.handler.JWTAuthHandler = {
+  def setAudience(audience: scala.collection.mutable.Buffer[String]): io.vertx.scala.ext.web.handler.JWTAuthHandler = {
     _asJava.setAudience(audience.map(x => if(x == null) null else x:java.lang.String).asJava)
     this
   }

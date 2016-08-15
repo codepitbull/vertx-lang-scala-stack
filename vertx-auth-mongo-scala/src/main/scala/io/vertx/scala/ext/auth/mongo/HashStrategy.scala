@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package io.vertx.scala.ext.auth.mongo;
+package io.vertx.scala.ext.auth.mongo
 
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
-import scala.util.Try
 import io.vertx.ext.auth.mongo.HashSaltStyle
 import io.vertx.scala.ext.auth.User
 
@@ -57,7 +56,7 @@ class HashStrategy(private val _asJava: io.vertx.ext.auth.mongo.HashStrategy) {
     * @return null in case of [[HashSaltStyle#NO_SALT]] the salt of the user or a defined external salt
     */
   def getSalt(user: io.vertx.scala.ext.auth.User): scala.Option[String] = {
-    scala.Option(    _asJava.getSalt(user.asJava.asInstanceOf[io.vertx.ext.auth.User]))
+        scala.Option(_asJava.getSalt(user.asJava.asInstanceOf[io.vertx.ext.auth.User]))
   }
 
   /**
