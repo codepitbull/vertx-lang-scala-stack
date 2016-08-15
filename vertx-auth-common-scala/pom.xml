@@ -46,7 +46,7 @@
         <artifactId>maven-processor-plugin</artifactId>
       </plugin>
       <plugin>
-        <groupId>de.codepitbull</groupId>
+        <groupId>net.alchim31.maven</groupId>
         <artifactId>scala-maven-plugin</artifactId>
       </plugin>
       <plugin>
