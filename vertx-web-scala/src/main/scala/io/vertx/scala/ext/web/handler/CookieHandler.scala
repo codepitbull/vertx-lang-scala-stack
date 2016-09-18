@@ -40,7 +40,9 @@ object CookieHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.CookieHandler): io.vertx.scala.ext.web.handler.CookieHandler =
     new io.vertx.scala.ext.web.handler.CookieHandler(_asJava)
+
   def create(): io.vertx.scala.ext.web.handler.CookieHandler = {
     CookieHandler.apply(io.vertx.ext.web.handler.CookieHandler.create())
   }
+
 }

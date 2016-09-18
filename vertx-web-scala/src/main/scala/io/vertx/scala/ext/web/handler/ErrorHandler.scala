@@ -39,16 +39,21 @@ object ErrorHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.ErrorHandler): io.vertx.scala.ext.web.handler.ErrorHandler =
     new io.vertx.scala.ext.web.handler.ErrorHandler(_asJava)
+
   def create(): io.vertx.scala.ext.web.handler.ErrorHandler = {
     ErrorHandler.apply(io.vertx.ext.web.handler.ErrorHandler.create())
   }
+
   def create(errorTemplateName: String, displayExceptionDetails: Boolean): io.vertx.scala.ext.web.handler.ErrorHandler = {
     ErrorHandler.apply(io.vertx.ext.web.handler.ErrorHandler.create(errorTemplateName, displayExceptionDetails))
   }
+
   def create(displayExceptionDetails: Boolean): io.vertx.scala.ext.web.handler.ErrorHandler = {
     ErrorHandler.apply(io.vertx.ext.web.handler.ErrorHandler.create(displayExceptionDetails))
   }
+
   def create(errorTemplateName: String): io.vertx.scala.ext.web.handler.ErrorHandler = {
     ErrorHandler.apply(io.vertx.ext.web.handler.ErrorHandler.create(errorTemplateName))
   }
+
 }

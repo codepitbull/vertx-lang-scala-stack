@@ -81,10 +81,13 @@ object BodyHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.BodyHandler): io.vertx.scala.ext.web.handler.BodyHandler =
     new io.vertx.scala.ext.web.handler.BodyHandler(_asJava)
+
   def create(): io.vertx.scala.ext.web.handler.BodyHandler = {
     BodyHandler.apply(io.vertx.ext.web.handler.BodyHandler.create())
   }
+
   def create(uploadDirectory: String): io.vertx.scala.ext.web.handler.BodyHandler = {
     BodyHandler.apply(io.vertx.ext.web.handler.BodyHandler.create(uploadDirectory))
   }
+
 }

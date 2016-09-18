@@ -124,6 +124,15 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
   }
 
   /**
+    * Remove some data from the context. The data is available in any handlers that receive the context.
+    * @param key the key for the data
+    * @return the previous data associated with the key
+    */
+  def remove[T](key: String): T = {
+    _asJava.remove(key)
+  }
+
+  /**
     * @return the Vert.x instance associated to the initiating [[Router]] for this context
     */
   def vertx(): io.vertx.scala.core.Vertx = {
@@ -466,4 +475,5 @@ object RoutingContext {
 
   def apply(_asJava: io.vertx.ext.web.RoutingContext): io.vertx.scala.ext.web.RoutingContext =
     new io.vertx.scala.ext.web.RoutingContext(_asJava)
+
 }

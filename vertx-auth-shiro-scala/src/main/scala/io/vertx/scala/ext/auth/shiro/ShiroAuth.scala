@@ -19,8 +19,10 @@ package io.vertx.scala.ext.auth.shiro
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
+import io.vertx.scala.ext.auth.User
 import io.vertx.scala.core.Vertx
 import io.vertx.core.json.JsonObject
+import io.vertx.core.Handler
 import io.vertx.ext.auth.shiro.ShiroAuthOptions
 import io.vertx.ext.auth.shiro.ShiroAuthRealmType
 import io.vertx.scala.ext.auth.AuthProvider
@@ -47,10 +49,13 @@ object ShiroAuth {
 
   def apply(_asJava: io.vertx.ext.auth.shiro.ShiroAuth): io.vertx.scala.ext.auth.shiro.ShiroAuth =
     new io.vertx.scala.ext.auth.shiro.ShiroAuth(_asJava)
+
   def create(vertx: io.vertx.scala.core.Vertx, realmType: io.vertx.ext.auth.shiro.ShiroAuthRealmType, config: io.vertx.core.json.JsonObject): io.vertx.scala.ext.auth.shiro.ShiroAuth = {
     ShiroAuth.apply(io.vertx.ext.auth.shiro.ShiroAuth.create(vertx.asJava.asInstanceOf[io.vertx.core.Vertx], realmType, config))
   }
+
   def create(vertx: io.vertx.scala.core.Vertx, options: io.vertx.scala.ext.auth.shiro.ShiroAuthOptions): io.vertx.scala.ext.auth.shiro.ShiroAuth = {
     ShiroAuth.apply(io.vertx.ext.auth.shiro.ShiroAuth.create(vertx.asJava.asInstanceOf[io.vertx.core.Vertx], options.asJava))
   }
+
 }

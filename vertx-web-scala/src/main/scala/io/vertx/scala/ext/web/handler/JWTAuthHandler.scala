@@ -90,10 +90,13 @@ object JWTAuthHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.JWTAuthHandler): io.vertx.scala.ext.web.handler.JWTAuthHandler =
     new io.vertx.scala.ext.web.handler.JWTAuthHandler(_asJava)
+
   def create(authProvider: io.vertx.scala.ext.auth.jwt.JWTAuth): io.vertx.scala.ext.web.handler.JWTAuthHandler = {
     JWTAuthHandler.apply(io.vertx.ext.web.handler.JWTAuthHandler.create(authProvider.asJava.asInstanceOf[io.vertx.ext.auth.jwt.JWTAuth]))
   }
+
   def create(authProvider: io.vertx.scala.ext.auth.jwt.JWTAuth, skip: String): io.vertx.scala.ext.web.handler.JWTAuthHandler = {
     JWTAuthHandler.apply(io.vertx.ext.web.handler.JWTAuthHandler.create(authProvider.asJava.asInstanceOf[io.vertx.ext.auth.jwt.JWTAuth], skip))
   }
+
 }

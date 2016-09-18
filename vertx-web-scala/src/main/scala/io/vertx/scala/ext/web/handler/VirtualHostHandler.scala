@@ -39,7 +39,9 @@ object VirtualHostHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.VirtualHostHandler): io.vertx.scala.ext.web.handler.VirtualHostHandler =
     new io.vertx.scala.ext.web.handler.VirtualHostHandler(_asJava)
-  def createWithHandler(hostname: String)( handler: io.vertx.scala.ext.web.RoutingContext => Unit): io.vertx.scala.ext.web.handler.VirtualHostHandler = {
+
+  def create(hostname: String, handler: io.vertx.scala.ext.web.RoutingContext => Unit): io.vertx.scala.ext.web.handler.VirtualHostHandler = {
     VirtualHostHandler.apply(io.vertx.ext.web.handler.VirtualHostHandler.create(hostname, funcToMappedHandler(RoutingContext.apply)(handler)))
   }
+
 }

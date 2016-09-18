@@ -83,10 +83,13 @@ object FormLoginHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.FormLoginHandler): io.vertx.scala.ext.web.handler.FormLoginHandler =
     new io.vertx.scala.ext.web.handler.FormLoginHandler(_asJava)
+
   def create(authProvider: io.vertx.scala.ext.auth.AuthProvider): io.vertx.scala.ext.web.handler.FormLoginHandler = {
     FormLoginHandler.apply(io.vertx.ext.web.handler.FormLoginHandler.create(authProvider.asJava.asInstanceOf[io.vertx.ext.auth.AuthProvider]))
   }
+
   def create(authProvider: io.vertx.scala.ext.auth.AuthProvider, usernameParam: String, passwordParam: String, returnURLParam: String, directLoggedInOKURL: String): io.vertx.scala.ext.web.handler.FormLoginHandler = {
     FormLoginHandler.apply(io.vertx.ext.web.handler.FormLoginHandler.create(authProvider.asJava.asInstanceOf[io.vertx.ext.auth.AuthProvider], usernameParam, passwordParam, returnURLParam, directLoggedInOKURL))
   }
+
 }

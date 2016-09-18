@@ -41,16 +41,21 @@ object FaviconHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.FaviconHandler): io.vertx.scala.ext.web.handler.FaviconHandler =
     new io.vertx.scala.ext.web.handler.FaviconHandler(_asJava)
+
   def create(): io.vertx.scala.ext.web.handler.FaviconHandler = {
     FaviconHandler.apply(io.vertx.ext.web.handler.FaviconHandler.create())
   }
+
   def create(path: String): io.vertx.scala.ext.web.handler.FaviconHandler = {
     FaviconHandler.apply(io.vertx.ext.web.handler.FaviconHandler.create(path))
   }
+
   def create(path: String, maxAgeSeconds: Long): io.vertx.scala.ext.web.handler.FaviconHandler = {
     FaviconHandler.apply(io.vertx.ext.web.handler.FaviconHandler.create(path, maxAgeSeconds))
   }
+
   def create(maxAgeSeconds: Long): io.vertx.scala.ext.web.handler.FaviconHandler = {
     FaviconHandler.apply(io.vertx.ext.web.handler.FaviconHandler.create(maxAgeSeconds))
   }
+
 }

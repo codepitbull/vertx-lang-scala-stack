@@ -157,7 +157,9 @@ object Cookie {
 
   def apply(_asJava: io.vertx.ext.web.Cookie): io.vertx.scala.ext.web.Cookie =
     new io.vertx.scala.ext.web.Cookie(_asJava)
+
   def cookie(name: String, value: String): io.vertx.scala.ext.web.Cookie = {
     Cookie.apply(io.vertx.ext.web.Cookie.cookie(name, value))
   }
+
 }

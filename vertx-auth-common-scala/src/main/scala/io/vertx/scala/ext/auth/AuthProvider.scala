@@ -47,10 +47,12 @@ class AuthProvider(private val _asJava: io.vertx.ext.auth.AuthProvider) {
     * If the user is successfully authenticated a [[io.vertx.scala.ext.auth.User]] object is passed to the handler in an [[io.vertx.scala.core.AsyncResult]].
     * The user object can then be used for authorisation.
     * @param authInfo The auth information
-    * @param resultHandler The result handler
+    * @return The result future
     */
-  def authenticateWithHandler(authInfo: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [io.vertx.scala.ext.auth.User] => Unit): Unit = {
-    _asJava.authenticate(authInfo, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.ext.auth.User], io.vertx.core.AsyncResult [io.vertx.scala.ext.auth.User]](x => io.vertx.lang.scala.AsyncResult[io.vertx.ext.auth.User, io.vertx.scala.ext.auth.User](x,(x => if (x == null) null else User.apply(x))))(resultHandler))
+  def authenticateFuture(authInfo: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.scala.ext.auth.User] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.auth.User,io.vertx.scala.ext.auth.User]((x => if (x == null) null else User.apply(x)))
+    _asJava.authenticate(authInfo, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
 }
@@ -59,4 +61,5 @@ object AuthProvider {
 
   def apply(_asJava: io.vertx.ext.auth.AuthProvider): io.vertx.scala.ext.auth.AuthProvider =
     new io.vertx.scala.ext.auth.AuthProvider(_asJava)
+
 }

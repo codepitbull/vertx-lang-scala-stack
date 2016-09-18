@@ -40,13 +40,17 @@ object LoggerHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.LoggerHandler): io.vertx.scala.ext.web.handler.LoggerHandler =
     new io.vertx.scala.ext.web.handler.LoggerHandler(_asJava)
+
   def create(): io.vertx.scala.ext.web.handler.LoggerHandler = {
     LoggerHandler.apply(io.vertx.ext.web.handler.LoggerHandler.create())
   }
+
   def create(format: io.vertx.ext.web.handler.LoggerFormat): io.vertx.scala.ext.web.handler.LoggerHandler = {
     LoggerHandler.apply(io.vertx.ext.web.handler.LoggerHandler.create(format))
   }
+
   def create(immediate: Boolean, format: io.vertx.ext.web.handler.LoggerFormat): io.vertx.scala.ext.web.handler.LoggerHandler = {
     LoggerHandler.apply(io.vertx.ext.web.handler.LoggerHandler.create(immediate, format))
   }
+
 }

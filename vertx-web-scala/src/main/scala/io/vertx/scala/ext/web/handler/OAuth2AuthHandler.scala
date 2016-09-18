@@ -81,7 +81,9 @@ object OAuth2AuthHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.OAuth2AuthHandler): io.vertx.scala.ext.web.handler.OAuth2AuthHandler =
     new io.vertx.scala.ext.web.handler.OAuth2AuthHandler(_asJava)
+
   def create(authProvider: io.vertx.scala.ext.auth.oauth2.OAuth2Auth, uri: String): io.vertx.scala.ext.web.handler.OAuth2AuthHandler = {
     OAuth2AuthHandler.apply(io.vertx.ext.web.handler.OAuth2AuthHandler.create(authProvider.asJava.asInstanceOf[io.vertx.ext.auth.oauth2.OAuth2Auth], uri))
   }
+
 }

@@ -20,7 +20,9 @@ import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
 import io.vertx.scala.ext.auth.User
+import io.vertx.core.json.JsonObject
 import io.vertx.core.Handler
+import io.vertx.scala.ext.auth.AuthProvider
 
 /**
   * AccessToken extension to the User interface
@@ -38,31 +40,34 @@ class AccessToken(private val _asJava: io.vertx.ext.auth.oauth2.AccessToken) {
 
   /**
     * Refresh the access token
-    * @param callback - The callback function returning the results.
+    * @return - The callback function returning the results.
     */
-  def refresh(callback: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.auth.oauth2.AccessToken = {
-    _asJava.refresh(funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(callback))
-    this
+  def refreshFuture(): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.refresh(promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
   /**
     * Revoke access or refresh token
     * @param token_type - A String containing the type of token to revoke. Should be either "access_token" or "refresh_token".
-    * @param callback - The callback function returning the results.
+    * @return - The callback function returning the results.
     */
-  def revokeWithHandler(token_type: String)( callback: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.auth.oauth2.AccessToken = {
-    _asJava.revoke(token_type, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(callback))
-    this
+  def revokeFuture(token_type: String): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.revoke(token_type, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
   /**
     * Revoke refresh token and calls the logout endpoint. This is a openid-connect extension and might not be
     * available on all providers.
-    * @param callback - The callback function returning the results.
+    * @return - The callback function returning the results.
     */
-  def logout(callback: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.auth.oauth2.AccessToken = {
-    _asJava.logout(funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(callback))
-    this
+  def logoutFuture(): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.logout(promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
 }
@@ -71,4 +76,5 @@ object AccessToken {
 
   def apply(_asJava: io.vertx.ext.auth.oauth2.AccessToken): io.vertx.scala.ext.auth.oauth2.AccessToken =
     new io.vertx.scala.ext.auth.oauth2.AccessToken(_asJava)
+
 }

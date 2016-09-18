@@ -110,7 +110,9 @@ object CorsHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.CorsHandler): io.vertx.scala.ext.web.handler.CorsHandler =
     new io.vertx.scala.ext.web.handler.CorsHandler(_asJava)
+
   def create(allowedOriginPattern: String): io.vertx.scala.ext.web.handler.CorsHandler = {
     CorsHandler.apply(io.vertx.ext.web.handler.CorsHandler.create(allowedOriginPattern))
   }
+
 }

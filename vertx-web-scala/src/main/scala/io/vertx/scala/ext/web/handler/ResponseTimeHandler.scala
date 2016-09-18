@@ -40,7 +40,9 @@ object ResponseTimeHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.ResponseTimeHandler): io.vertx.scala.ext.web.handler.ResponseTimeHandler =
     new io.vertx.scala.ext.web.handler.ResponseTimeHandler(_asJava)
+
   def create(): io.vertx.scala.ext.web.handler.ResponseTimeHandler = {
     ResponseTimeHandler.apply(io.vertx.ext.web.handler.ResponseTimeHandler.create())
   }
+
 }

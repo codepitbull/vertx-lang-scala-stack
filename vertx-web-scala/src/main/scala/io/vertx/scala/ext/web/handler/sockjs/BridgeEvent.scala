@@ -21,7 +21,9 @@ import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
 import io.vertx.ext.web.handler.sockjs.BridgeEventType
 import io.vertx.core.json.JsonObject
+import io.vertx.core.Handler
 import io.vertx.scala.core.Future
+import java.util.function.Function
 
 /**
   * Represents an event that occurs on the event bus bridge.
@@ -32,24 +34,57 @@ class BridgeEvent(private val _asJava: io.vertx.ext.web.handler.sockjs.BridgeEve
 
   def asJava: io.vertx.ext.web.handler.sockjs.BridgeEvent = _asJava
 
+  def setFuture(): concurrent.Future[Boolean] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Boolean,Boolean]((x => x))
+    _asJava.setHandler(promiseAndHandler._1)
+    promiseAndHandler._2.future
+  }
+
+  def complete(arg0: Boolean): Unit = {
+    _asJava.complete(arg0)
+  }
+
+  def result(): Boolean = {
+    _asJava.result()
+  }
+
+  def compose[U](handler: Boolean => Unit, next: io.vertx.scala.core.Future[U]): io.vertx.scala.core.Future[U] = {
+    Future.apply[U](_asJava.compose(funcToMappedHandler[java.lang.Boolean, Boolean](x => x)(handler), next.asJava.asInstanceOf[io.vertx.core.Future[U]]))
+  }
+
+  def compose[U](mapper: java.lang.Boolean => io.vertx.core.Future[U]): io.vertx.scala.core.Future[U] = {
+    Future.apply[U](_asJava.compose(asJavaFunction(mapper)))
+  }
+
+  def map[U](mapper: java.lang.Boolean => U): io.vertx.scala.core.Future[U] = {
+    Future.apply[U](_asJava.map(asJavaFunction(mapper)))
+  }
+
+  def completer(): io.vertx.core.AsyncResult [Boolean] => Unit = {
+    if(cached_0 == null) {
+      cached_0=    handlerToMappedFunction[io.vertx.core.AsyncResult[java.lang.Boolean], io.vertx.core.AsyncResult[Boolean]](s => if(s.failed()) io.vertx.lang.scala.ScalaAsyncResult(cause = s.cause()) else io.vertx.lang.scala.ScalaAsyncResult(result = s.result)) (_asJava.completer())
+    }
+    cached_0
+  }
+
   /**
     * @return the type of the event
     */
   def `type`(): io.vertx.ext.web.handler.sockjs.BridgeEventType = {
-    if(cached_0 == null) {
-      cached_0=    _asJava.`type`()
+    if(cached_1 == null) {
+      cached_1=    _asJava.`type`()
     }
-    cached_0
+    cached_1
   }
 
   /**
     * Use [[io.vertx.scala.ext.web.handler.sockjs.BridgeEvent#getRawMessage]] instead, will be removed in 3.3
     */
   def rawMessage(): io.vertx.core.json.JsonObject = {
-    if(cached_1 == null) {
-      cached_1=    _asJava.rawMessage()
+    if(cached_2 == null) {
+      cached_2=    _asJava.rawMessage()
     }
-    cached_1
+    cached_2
   }
 
   /**
@@ -78,19 +113,21 @@ class BridgeEvent(private val _asJava: io.vertx.ext.web.handler.sockjs.BridgeEve
     * @return the SockJSSocket instance
     */
   def socket(): io.vertx.scala.ext.web.handler.sockjs.SockJSSocket = {
-    if(cached_2 == null) {
-      cached_2=    SockJSSocket.apply(_asJava.socket())
+    if(cached_3 == null) {
+      cached_3=    SockJSSocket.apply(_asJava.socket())
     }
-    cached_2
+    cached_3
   }
 
-  private var cached_0: io.vertx.ext.web.handler.sockjs.BridgeEventType = _
-  private var cached_1: io.vertx.core.json.JsonObject = _
-  private var cached_2: io.vertx.scala.ext.web.handler.sockjs.SockJSSocket = _
+  private var cached_0: io.vertx.core.AsyncResult [Boolean] => Unit = _
+  private var cached_1: io.vertx.ext.web.handler.sockjs.BridgeEventType = _
+  private var cached_2: io.vertx.core.json.JsonObject = _
+  private var cached_3: io.vertx.scala.ext.web.handler.sockjs.SockJSSocket = _
 }
 
 object BridgeEvent {
 
   def apply(_asJava: io.vertx.ext.web.handler.sockjs.BridgeEvent): io.vertx.scala.ext.web.handler.sockjs.BridgeEvent =
     new io.vertx.scala.ext.web.handler.sockjs.BridgeEvent(_asJava)
+
 }

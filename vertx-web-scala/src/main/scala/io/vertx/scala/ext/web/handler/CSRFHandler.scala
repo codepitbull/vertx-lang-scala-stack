@@ -86,7 +86,9 @@ object CSRFHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.CSRFHandler): io.vertx.scala.ext.web.handler.CSRFHandler =
     new io.vertx.scala.ext.web.handler.CSRFHandler(_asJava)
+
   def create(secret: String): io.vertx.scala.ext.web.handler.CSRFHandler = {
     CSRFHandler.apply(io.vertx.ext.web.handler.CSRFHandler.create(secret))
   }
+
 }

@@ -203,4 +203,5 @@ object Route {
 
   def apply(_asJava: io.vertx.ext.web.Route): io.vertx.scala.ext.web.Route =
     new io.vertx.scala.ext.web.Route(_asJava)
+
 }

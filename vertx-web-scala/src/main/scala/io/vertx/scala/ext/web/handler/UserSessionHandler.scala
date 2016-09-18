@@ -47,7 +47,9 @@ object UserSessionHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.UserSessionHandler): io.vertx.scala.ext.web.handler.UserSessionHandler =
     new io.vertx.scala.ext.web.handler.UserSessionHandler(_asJava)
+
   def create(authProvider: io.vertx.scala.ext.auth.AuthProvider): io.vertx.scala.ext.web.handler.UserSessionHandler = {
     UserSessionHandler.apply(io.vertx.ext.web.handler.UserSessionHandler.create(authProvider.asJava.asInstanceOf[io.vertx.ext.auth.AuthProvider]))
   }
+
 }

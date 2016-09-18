@@ -36,10 +36,12 @@ class TemplateEngine(private val _asJava: io.vertx.ext.web.templ.TemplateEngine)
     * Render
     * @param context the routing context
     * @param templateFileName the template file name to use
-    * @param handler the handler that will be called with a result containing the buffer or a failure.
+    * @return the future that will be called with a result containing the buffer or a failure.
     */
-  def renderWithHandler(context: io.vertx.scala.ext.web.RoutingContext, templateFileName: String)( handler: io.vertx.core.AsyncResult [io.vertx.scala.core.buffer.Buffer] => Unit): Unit = {
-    _asJava.render(context.asJava.asInstanceOf[io.vertx.ext.web.RoutingContext], templateFileName, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.core.buffer.Buffer], io.vertx.core.AsyncResult [io.vertx.scala.core.buffer.Buffer]](x => io.vertx.lang.scala.AsyncResult[io.vertx.core.buffer.Buffer, io.vertx.scala.core.buffer.Buffer](x,(x => if (x == null) null else Buffer.apply(x))))(handler))
+  def renderFuture(context: io.vertx.scala.ext.web.RoutingContext, templateFileName: String): concurrent.Future[io.vertx.scala.core.buffer.Buffer] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.buffer.Buffer,io.vertx.scala.core.buffer.Buffer]((x => if (x == null) null else Buffer.apply(x)))
+    _asJava.render(context.asJava.asInstanceOf[io.vertx.ext.web.RoutingContext], templateFileName, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
 }
@@ -48,4 +50,5 @@ object TemplateEngine {
 
   def apply(_asJava: io.vertx.ext.web.templ.TemplateEngine): io.vertx.scala.ext.web.templ.TemplateEngine =
     new io.vertx.scala.ext.web.templ.TemplateEngine(_asJava)
+
 }

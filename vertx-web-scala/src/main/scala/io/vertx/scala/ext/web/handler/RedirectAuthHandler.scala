@@ -60,13 +60,17 @@ object RedirectAuthHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.RedirectAuthHandler): io.vertx.scala.ext.web.handler.RedirectAuthHandler =
     new io.vertx.scala.ext.web.handler.RedirectAuthHandler(_asJava)
+
   def create(authProvider: io.vertx.scala.ext.auth.AuthProvider): io.vertx.scala.ext.web.handler.AuthHandler = {
     AuthHandler.apply(io.vertx.ext.web.handler.RedirectAuthHandler.create(authProvider.asJava.asInstanceOf[io.vertx.ext.auth.AuthProvider]))
   }
+
   def create(authProvider: io.vertx.scala.ext.auth.AuthProvider, loginRedirectURL: String): io.vertx.scala.ext.web.handler.AuthHandler = {
     AuthHandler.apply(io.vertx.ext.web.handler.RedirectAuthHandler.create(authProvider.asJava.asInstanceOf[io.vertx.ext.auth.AuthProvider], loginRedirectURL))
   }
+
   def create(authProvider: io.vertx.scala.ext.auth.AuthProvider, loginRedirectURL: String, returnURLParam: String): io.vertx.scala.ext.web.handler.AuthHandler = {
     AuthHandler.apply(io.vertx.ext.web.handler.RedirectAuthHandler.create(authProvider.asJava.asInstanceOf[io.vertx.ext.auth.AuthProvider], loginRedirectURL, returnURLParam))
   }
+
 }

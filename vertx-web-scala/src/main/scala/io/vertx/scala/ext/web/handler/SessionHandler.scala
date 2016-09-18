@@ -100,7 +100,9 @@ object SessionHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.SessionHandler): io.vertx.scala.ext.web.handler.SessionHandler =
     new io.vertx.scala.ext.web.handler.SessionHandler(_asJava)
+
   def create(sessionStore: io.vertx.scala.ext.web.sstore.SessionStore): io.vertx.scala.ext.web.handler.SessionHandler = {
     SessionHandler.apply(io.vertx.ext.web.handler.SessionHandler.create(sessionStore.asJava.asInstanceOf[io.vertx.ext.web.sstore.SessionStore]))
   }
+
 }

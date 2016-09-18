@@ -183,16 +183,29 @@ class StaticHandler(private val _asJava: io.vertx.ext.web.handler.StaticHandler)
     this
   }
 
+  /**
+    * Set whether vary header should be sent with response.
+    * @param varyHeader true to sent vary header
+    * @return a reference to this, so the API can be used fluently
+    */
+  def setSendVaryHeader(varyHeader: Boolean): io.vertx.scala.ext.web.handler.StaticHandler = {
+    _asJava.setSendVaryHeader(varyHeader)
+    this
+  }
+
 }
 
 object StaticHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.StaticHandler): io.vertx.scala.ext.web.handler.StaticHandler =
     new io.vertx.scala.ext.web.handler.StaticHandler(_asJava)
+
   def create(): io.vertx.scala.ext.web.handler.StaticHandler = {
     StaticHandler.apply(io.vertx.ext.web.handler.StaticHandler.create())
   }
+
   def create(root: String): io.vertx.scala.ext.web.handler.StaticHandler = {
     StaticHandler.apply(io.vertx.ext.web.handler.StaticHandler.create(root))
   }
+
 }

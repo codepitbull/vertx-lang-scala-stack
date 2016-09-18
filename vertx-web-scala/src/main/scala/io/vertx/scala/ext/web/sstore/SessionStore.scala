@@ -51,44 +51,54 @@ class SessionStore(private val _asJava: io.vertx.ext.web.sstore.SessionStore) {
   /**
     * Get the session with the specified ID
     * @param id the unique ID of the session
-    * @param resultHandler will be called with a result holding the session, or a failure
+    * @return will be called with a result holding the session, or a failure
     */
-  def getWithHandler(id: String)( resultHandler: io.vertx.core.AsyncResult [io.vertx.scala.ext.web.Session] => Unit): Unit = {
-    _asJava.get(id, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.ext.web.Session], io.vertx.core.AsyncResult [io.vertx.scala.ext.web.Session]](x => io.vertx.lang.scala.AsyncResult[io.vertx.ext.web.Session, io.vertx.scala.ext.web.Session](x,(x => if (x == null) null else Session.apply(x))))(resultHandler))
+  def getFuture(id: String): concurrent.Future[io.vertx.scala.ext.web.Session] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.web.Session,io.vertx.scala.ext.web.Session]((x => if (x == null) null else Session.apply(x)))
+    _asJava.get(id, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
   /**
     * Delete the session with the specified ID
     * @param id the unique ID of the session
-    * @param resultHandler will be called with a result true/false, or a failure
+    * @return will be called with a result true/false, or a failure
     */
-  def deleteWithHandler(id: String)( resultHandler: io.vertx.core.AsyncResult [Boolean] => Unit): Unit = {
-    _asJava.delete(id, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Boolean], io.vertx.core.AsyncResult [Boolean]](x => io.vertx.lang.scala.AsyncResult[java.lang.Boolean, Boolean](x,(x => x)))(resultHandler))
+  def deleteFuture(id: String): concurrent.Future[Boolean] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Boolean,Boolean]((x => x))
+    _asJava.delete(id, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
   /**
     * Add a session with the specified ID
     * @param session the session
-    * @param resultHandler will be called with a result true/false, or a failure
+    * @return will be called with a result true/false, or a failure
     */
-  def putWithHandler(session: io.vertx.scala.ext.web.Session)( resultHandler: io.vertx.core.AsyncResult [Boolean] => Unit): Unit = {
-    _asJava.put(session.asJava.asInstanceOf[io.vertx.ext.web.Session], funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Boolean], io.vertx.core.AsyncResult [Boolean]](x => io.vertx.lang.scala.AsyncResult[java.lang.Boolean, Boolean](x,(x => x)))(resultHandler))
+  def putFuture(session: io.vertx.scala.ext.web.Session): concurrent.Future[Boolean] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Boolean,Boolean]((x => x))
+    _asJava.put(session.asJava.asInstanceOf[io.vertx.ext.web.Session], promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
   /**
     * Remove all sessions from the store
-    * @param resultHandler will be called with a result true/false, or a failure
+    * @return will be called with a result true/false, or a failure
     */
-  def clear(resultHandler: io.vertx.core.AsyncResult [Boolean] => Unit): Unit = {
-    _asJava.clear(funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Boolean], io.vertx.core.AsyncResult [Boolean]](x => io.vertx.lang.scala.AsyncResult[java.lang.Boolean, Boolean](x,(x => x)))(resultHandler))
+  def clearFuture(): concurrent.Future[Boolean] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Boolean,Boolean]((x => x))
+    _asJava.clear(promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
   /**
     * Get the number of sessions in the store
-    * @param resultHandler will be called with the number, or a failure
+    * @return will be called with the number, or a failure
     */
-  def size(resultHandler: io.vertx.core.AsyncResult [Int] => Unit): Unit = {
-    _asJava.size(funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Integer], io.vertx.core.AsyncResult [Int]](x => io.vertx.lang.scala.AsyncResult[java.lang.Integer, Int](x,(x => x)))(resultHandler))
+  def sizeFuture(): concurrent.Future[Int] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Integer,Int]((x => x))
+    _asJava.size(promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
   /**
@@ -104,4 +114,5 @@ object SessionStore {
 
   def apply(_asJava: io.vertx.ext.web.sstore.SessionStore): io.vertx.scala.ext.web.sstore.SessionStore =
     new io.vertx.scala.ext.web.sstore.SessionStore(_asJava)
+
 }

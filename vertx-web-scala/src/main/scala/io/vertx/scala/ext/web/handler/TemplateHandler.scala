@@ -42,10 +42,13 @@ object TemplateHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.TemplateHandler): io.vertx.scala.ext.web.handler.TemplateHandler =
     new io.vertx.scala.ext.web.handler.TemplateHandler(_asJava)
+
   def create(engine: io.vertx.scala.ext.web.templ.TemplateEngine): io.vertx.scala.ext.web.handler.TemplateHandler = {
     TemplateHandler.apply(io.vertx.ext.web.handler.TemplateHandler.create(engine.asJava.asInstanceOf[io.vertx.ext.web.templ.TemplateEngine]))
   }
+
   def create(engine: io.vertx.scala.ext.web.templ.TemplateEngine, templateDirectory: String, contentType: String): io.vertx.scala.ext.web.handler.TemplateHandler = {
     TemplateHandler.apply(io.vertx.ext.web.handler.TemplateHandler.create(engine.asJava.asInstanceOf[io.vertx.ext.web.templ.TemplateEngine], templateDirectory, contentType))
   }
+
 }

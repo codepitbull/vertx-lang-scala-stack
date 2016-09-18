@@ -71,7 +71,7 @@ class SockJSHandler(private val _asJava: io.vertx.ext.web.handler.sockjs.SockJSH
     * @param bridgeEventHandler handler to receive bridge events
     * @return a reference to this, so the API can be used fluently
     */
-  def bridgeWithHandler(bridgeOptions: io.vertx.scala.ext.web.handler.sockjs.BridgeOptions)( bridgeEventHandler: io.vertx.scala.ext.web.handler.sockjs.BridgeEvent => Unit): io.vertx.scala.ext.web.handler.sockjs.SockJSHandler = {
+  def bridge(bridgeOptions: io.vertx.scala.ext.web.handler.sockjs.BridgeOptions, bridgeEventHandler: io.vertx.scala.ext.web.handler.sockjs.BridgeEvent => Unit): io.vertx.scala.ext.web.handler.sockjs.SockJSHandler = {
     _asJava.bridge(bridgeOptions.asJava, funcToMappedHandler(BridgeEvent.apply)(bridgeEventHandler))
     this
   }
@@ -82,13 +82,17 @@ object SockJSHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.sockjs.SockJSHandler): io.vertx.scala.ext.web.handler.sockjs.SockJSHandler =
     new io.vertx.scala.ext.web.handler.sockjs.SockJSHandler(_asJava)
+
   def create(vertx: io.vertx.scala.core.Vertx): io.vertx.scala.ext.web.handler.sockjs.SockJSHandler = {
     SockJSHandler.apply(io.vertx.ext.web.handler.sockjs.SockJSHandler.create(vertx.asJava.asInstanceOf[io.vertx.core.Vertx]))
   }
+
   def create(vertx: io.vertx.scala.core.Vertx, options: io.vertx.scala.ext.web.handler.sockjs.SockJSHandlerOptions): io.vertx.scala.ext.web.handler.sockjs.SockJSHandler = {
     SockJSHandler.apply(io.vertx.ext.web.handler.sockjs.SockJSHandler.create(vertx.asJava.asInstanceOf[io.vertx.core.Vertx], options.asJava))
   }
+
   def installTestApplications(router: io.vertx.scala.ext.web.Router, vertx: io.vertx.scala.core.Vertx): Unit = {
     io.vertx.ext.web.handler.sockjs.SockJSHandler.installTestApplications(router.asJava.asInstanceOf[io.vertx.ext.web.Router], vertx.asJava.asInstanceOf[io.vertx.core.Vertx])
   }
+
 }

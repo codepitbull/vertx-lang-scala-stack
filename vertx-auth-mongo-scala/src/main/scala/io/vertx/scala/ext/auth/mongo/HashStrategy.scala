@@ -89,4 +89,5 @@ object HashStrategy {
 
   def apply(_asJava: io.vertx.ext.auth.mongo.HashStrategy): io.vertx.scala.ext.auth.mongo.HashStrategy =
     new io.vertx.scala.ext.auth.mongo.HashStrategy(_asJava)
+
 }

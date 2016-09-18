@@ -19,11 +19,12 @@ package io.vertx.scala.ext.auth.oauth2
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
+import io.vertx.scala.ext.auth.User
 import io.vertx.core.http.HttpMethod
 import io.vertx.scala.core.Vertx
 import io.vertx.core.json.JsonObject
-import io.vertx.ext.auth.oauth2.OAuth2FlowType
 import io.vertx.core.Handler
+import io.vertx.ext.auth.oauth2.OAuth2FlowType
 import io.vertx.ext.auth.oauth2.OAuth2ClientOptions
 import io.vertx.scala.ext.auth.AuthProvider
 
@@ -44,10 +45,12 @@ class OAuth2Auth(private val _asJava: io.vertx.ext.auth.oauth2.OAuth2Auth) {
   /**
     * Returns the Access Token object.
     * @param params - JSON with the options, each flow requires different options.
-    * @param handler - The handler returning the results.
+    * @return - The future returning the results.
     */
-  def getTokenWithHandler(params: io.vertx.core.json.JsonObject)( handler: io.vertx.core.AsyncResult [io.vertx.scala.ext.auth.oauth2.AccessToken] => Unit): Unit = {
-    _asJava.getToken(params, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.ext.auth.oauth2.AccessToken], io.vertx.core.AsyncResult [io.vertx.scala.ext.auth.oauth2.AccessToken]](x => io.vertx.lang.scala.AsyncResult[io.vertx.ext.auth.oauth2.AccessToken, io.vertx.scala.ext.auth.oauth2.AccessToken](x,(x => if (x == null) null else AccessToken.apply(x))))(handler))
+  def getTokenFuture(params: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.scala.ext.auth.oauth2.AccessToken] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.auth.oauth2.AccessToken,io.vertx.scala.ext.auth.oauth2.AccessToken]((x => if (x == null) null else AccessToken.apply(x)))
+    _asJava.getToken(params, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
   /**
@@ -55,12 +58,12 @@ class OAuth2Auth(private val _asJava: io.vertx.ext.auth.oauth2.OAuth2Auth) {
     * @param method HttpMethod
     * @param path target path
     * @param params parameters
-    * @param handler handler
-    * @return self
+    * @return future
     */
-  def apiWithHandler(method: io.vertx.core.http.HttpMethod, path: String, params: io.vertx.core.json.JsonObject)( handler: io.vertx.core.AsyncResult [io.vertx.core.json.JsonObject] => Unit): io.vertx.scala.ext.auth.oauth2.OAuth2Auth = {
-    _asJava.api(method, path, params, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.core.json.JsonObject], io.vertx.core.AsyncResult [io.vertx.core.json.JsonObject]](x => io.vertx.lang.scala.AsyncResult[io.vertx.core.json.JsonObject, io.vertx.core.json.JsonObject](x,(x => x)))(handler))
-    this
+  def apiFuture(method: io.vertx.core.http.HttpMethod, path: String, params: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.api(method, path, params, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
   /**
@@ -84,13 +87,17 @@ object OAuth2Auth {
 
   def apply(_asJava: io.vertx.ext.auth.oauth2.OAuth2Auth): io.vertx.scala.ext.auth.oauth2.OAuth2Auth =
     new io.vertx.scala.ext.auth.oauth2.OAuth2Auth(_asJava)
+
   def createKeycloak(vertx: io.vertx.scala.core.Vertx, flow: io.vertx.ext.auth.oauth2.OAuth2FlowType, config: io.vertx.core.json.JsonObject): io.vertx.scala.ext.auth.oauth2.OAuth2Auth = {
     OAuth2Auth.apply(io.vertx.ext.auth.oauth2.OAuth2Auth.createKeycloak(vertx.asJava.asInstanceOf[io.vertx.core.Vertx], flow, config))
   }
+
   def create(vertx: io.vertx.scala.core.Vertx, flow: io.vertx.ext.auth.oauth2.OAuth2FlowType, config: io.vertx.scala.ext.auth.oauth2.OAuth2ClientOptions): io.vertx.scala.ext.auth.oauth2.OAuth2Auth = {
     OAuth2Auth.apply(io.vertx.ext.auth.oauth2.OAuth2Auth.create(vertx.asJava.asInstanceOf[io.vertx.core.Vertx], flow, config.asJava))
   }
+
   def create(vertx: io.vertx.scala.core.Vertx, flow: io.vertx.ext.auth.oauth2.OAuth2FlowType): io.vertx.scala.ext.auth.oauth2.OAuth2Auth = {
     OAuth2Auth.apply(io.vertx.ext.auth.oauth2.OAuth2Auth.create(vertx.asJava.asInstanceOf[io.vertx.core.Vertx], flow))
   }
+
 }

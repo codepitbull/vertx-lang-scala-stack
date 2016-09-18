@@ -112,4 +112,5 @@ object Session {
 
   def apply(_asJava: io.vertx.ext.web.Session): io.vertx.scala.ext.web.Session =
     new io.vertx.scala.ext.web.Session(_asJava)
+
 }

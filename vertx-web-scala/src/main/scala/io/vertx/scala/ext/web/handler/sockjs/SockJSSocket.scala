@@ -166,4 +166,5 @@ object SockJSSocket {
 
   def apply(_asJava: io.vertx.ext.web.handler.sockjs.SockJSSocket): io.vertx.scala.ext.web.handler.sockjs.SockJSSocket =
     new io.vertx.scala.ext.web.handler.sockjs.SockJSSocket(_asJava)
+
 }

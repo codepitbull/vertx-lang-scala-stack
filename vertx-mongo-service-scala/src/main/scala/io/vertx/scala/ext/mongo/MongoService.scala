@@ -36,184 +36,220 @@ class MongoService(private val _asJava: io.vertx.ext.mongo.MongoService) {
 
   def asJava: io.vertx.ext.mongo.MongoService = _asJava
 
-  def saveWithHandler(collection: String, document: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [String] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.save(collection, document, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.String], io.vertx.core.AsyncResult [String]](x => io.vertx.lang.scala.AsyncResult[java.lang.String, String](x,(x => x)))(resultHandler))
-    this
+  def saveFuture(collection: String, document: io.vertx.core.json.JsonObject): concurrent.Future[String] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.String,String]((x => x))
+    _asJava.save(collection, document, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def saveWithOptionsWithHandler(collection: String, document: io.vertx.core.json.JsonObject, writeOption: io.vertx.ext.mongo.WriteOption)( resultHandler: io.vertx.core.AsyncResult [String] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.saveWithOptions(collection, document, writeOption, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.String], io.vertx.core.AsyncResult [String]](x => io.vertx.lang.scala.AsyncResult[java.lang.String, String](x,(x => x)))(resultHandler))
-    this
+  def saveWithOptionsFuture(collection: String, document: io.vertx.core.json.JsonObject, writeOption: io.vertx.ext.mongo.WriteOption): concurrent.Future[String] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.String,String]((x => x))
+    _asJava.saveWithOptions(collection, document, writeOption, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def insertWithHandler(collection: String, document: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [String] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.insert(collection, document, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.String], io.vertx.core.AsyncResult [String]](x => io.vertx.lang.scala.AsyncResult[java.lang.String, String](x,(x => x)))(resultHandler))
-    this
+  def insertFuture(collection: String, document: io.vertx.core.json.JsonObject): concurrent.Future[String] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.String,String]((x => x))
+    _asJava.insert(collection, document, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def insertWithOptionsWithHandler(collection: String, document: io.vertx.core.json.JsonObject, writeOption: io.vertx.ext.mongo.WriteOption)( resultHandler: io.vertx.core.AsyncResult [String] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.insertWithOptions(collection, document, writeOption, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.String], io.vertx.core.AsyncResult [String]](x => io.vertx.lang.scala.AsyncResult[java.lang.String, String](x,(x => x)))(resultHandler))
-    this
+  def insertWithOptionsFuture(collection: String, document: io.vertx.core.json.JsonObject, writeOption: io.vertx.ext.mongo.WriteOption): concurrent.Future[String] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.String,String]((x => x))
+    _asJava.insertWithOptions(collection, document, writeOption, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def updateWithHandler(collection: String, query: io.vertx.core.json.JsonObject, update: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.update(collection, query, update, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(resultHandler))
-    this
+  def updateFuture(collection: String, query: io.vertx.core.json.JsonObject, update: io.vertx.core.json.JsonObject): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.update(collection, query, update, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def updateCollectionWithHandler(collection: String, query: io.vertx.core.json.JsonObject, update: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [io.vertx.scala.ext.mongo.MongoClientUpdateResult] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.updateCollection(collection, query, update, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.ext.mongo.MongoClientUpdateResult], io.vertx.core.AsyncResult [io.vertx.scala.ext.mongo.MongoClientUpdateResult]](x => io.vertx.lang.scala.AsyncResult[io.vertx.ext.mongo.MongoClientUpdateResult, io.vertx.scala.ext.mongo.MongoClientUpdateResult](x,(x => MongoClientUpdateResult(x))))(resultHandler))
-    this
+  def updateCollectionFuture(collection: String, query: io.vertx.core.json.JsonObject, update: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.scala.ext.mongo.MongoClientUpdateResult] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.mongo.MongoClientUpdateResult,io.vertx.scala.ext.mongo.MongoClientUpdateResult]((x => MongoClientUpdateResult(x)))
+    _asJava.updateCollection(collection, query, update, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def updateWithOptionsWithHandler(collection: String, query: io.vertx.core.json.JsonObject, update: io.vertx.core.json.JsonObject, options: io.vertx.scala.ext.mongo.UpdateOptions)( resultHandler: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.updateWithOptions(collection, query, update, options.asJava, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(resultHandler))
-    this
+  def updateWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, update: io.vertx.core.json.JsonObject, options: io.vertx.scala.ext.mongo.UpdateOptions): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.updateWithOptions(collection, query, update, options.asJava, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def updateCollectionWithOptionsWithHandler(collection: String, query: io.vertx.core.json.JsonObject, update: io.vertx.core.json.JsonObject, options: io.vertx.scala.ext.mongo.UpdateOptions)( resultHandler: io.vertx.core.AsyncResult [io.vertx.scala.ext.mongo.MongoClientUpdateResult] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.updateCollectionWithOptions(collection, query, update, options.asJava, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.ext.mongo.MongoClientUpdateResult], io.vertx.core.AsyncResult [io.vertx.scala.ext.mongo.MongoClientUpdateResult]](x => io.vertx.lang.scala.AsyncResult[io.vertx.ext.mongo.MongoClientUpdateResult, io.vertx.scala.ext.mongo.MongoClientUpdateResult](x,(x => MongoClientUpdateResult(x))))(resultHandler))
-    this
+  def updateCollectionWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, update: io.vertx.core.json.JsonObject, options: io.vertx.scala.ext.mongo.UpdateOptions): concurrent.Future[io.vertx.scala.ext.mongo.MongoClientUpdateResult] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.mongo.MongoClientUpdateResult,io.vertx.scala.ext.mongo.MongoClientUpdateResult]((x => MongoClientUpdateResult(x)))
+    _asJava.updateCollectionWithOptions(collection, query, update, options.asJava, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def replaceWithHandler(collection: String, query: io.vertx.core.json.JsonObject, replace: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.replace(collection, query, replace, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(resultHandler))
-    this
+  def replaceFuture(collection: String, query: io.vertx.core.json.JsonObject, replace: io.vertx.core.json.JsonObject): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.replace(collection, query, replace, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def replaceDocumentsWithHandler(collection: String, query: io.vertx.core.json.JsonObject, replace: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [io.vertx.scala.ext.mongo.MongoClientUpdateResult] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.replaceDocuments(collection, query, replace, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.ext.mongo.MongoClientUpdateResult], io.vertx.core.AsyncResult [io.vertx.scala.ext.mongo.MongoClientUpdateResult]](x => io.vertx.lang.scala.AsyncResult[io.vertx.ext.mongo.MongoClientUpdateResult, io.vertx.scala.ext.mongo.MongoClientUpdateResult](x,(x => MongoClientUpdateResult(x))))(resultHandler))
-    this
+  def replaceDocumentsFuture(collection: String, query: io.vertx.core.json.JsonObject, replace: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.scala.ext.mongo.MongoClientUpdateResult] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.mongo.MongoClientUpdateResult,io.vertx.scala.ext.mongo.MongoClientUpdateResult]((x => MongoClientUpdateResult(x)))
+    _asJava.replaceDocuments(collection, query, replace, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def replaceWithOptionsWithHandler(collection: String, query: io.vertx.core.json.JsonObject, replace: io.vertx.core.json.JsonObject, options: io.vertx.scala.ext.mongo.UpdateOptions)( resultHandler: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.replaceWithOptions(collection, query, replace, options.asJava, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(resultHandler))
-    this
+  def replaceWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, replace: io.vertx.core.json.JsonObject, options: io.vertx.scala.ext.mongo.UpdateOptions): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.replaceWithOptions(collection, query, replace, options.asJava, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def replaceDocumentsWithOptionsWithHandler(collection: String, query: io.vertx.core.json.JsonObject, replace: io.vertx.core.json.JsonObject, options: io.vertx.scala.ext.mongo.UpdateOptions)( resultHandler: io.vertx.core.AsyncResult [io.vertx.scala.ext.mongo.MongoClientUpdateResult] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.replaceDocumentsWithOptions(collection, query, replace, options.asJava, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.ext.mongo.MongoClientUpdateResult], io.vertx.core.AsyncResult [io.vertx.scala.ext.mongo.MongoClientUpdateResult]](x => io.vertx.lang.scala.AsyncResult[io.vertx.ext.mongo.MongoClientUpdateResult, io.vertx.scala.ext.mongo.MongoClientUpdateResult](x,(x => MongoClientUpdateResult(x))))(resultHandler))
-    this
+  def replaceDocumentsWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, replace: io.vertx.core.json.JsonObject, options: io.vertx.scala.ext.mongo.UpdateOptions): concurrent.Future[io.vertx.scala.ext.mongo.MongoClientUpdateResult] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.mongo.MongoClientUpdateResult,io.vertx.scala.ext.mongo.MongoClientUpdateResult]((x => MongoClientUpdateResult(x)))
+    _asJava.replaceDocumentsWithOptions(collection, query, replace, options.asJava, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def findWithHandler(collection: String, query: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [scala.collection.mutable.Buffer[io.vertx.core.json.JsonObject]] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.find(collection, query, funcToMappedHandler[io.vertx.core.AsyncResult[java.util.List[io.vertx.core.json.JsonObject]], io.vertx.core.AsyncResult [scala.collection.mutable.Buffer[io.vertx.core.json.JsonObject]]](x => io.vertx.lang.scala.AsyncResult[java.util.List[io.vertx.core.json.JsonObject], scala.collection.mutable.Buffer[io.vertx.core.json.JsonObject]](x,x => if (x == null) null else x.asScala))(resultHandler))
-    this
+  def findFuture(collection: String, query: io.vertx.core.json.JsonObject): concurrent.Future[scala.collection.mutable.Buffer[io.vertx.core.json.JsonObject]] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.util.List[io.vertx.core.json.JsonObject],scala.collection.mutable.Buffer[io.vertx.core.json.JsonObject]]((x => if (x == null) null else x.asScala))
+    _asJava.find(collection, query, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def findBatchWithHandler(collection: String, query: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [io.vertx.core.json.JsonObject] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.findBatch(collection, query, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.core.json.JsonObject], io.vertx.core.AsyncResult [io.vertx.core.json.JsonObject]](x => io.vertx.lang.scala.AsyncResult[io.vertx.core.json.JsonObject, io.vertx.core.json.JsonObject](x,(x => x)))(resultHandler))
-    this
+  def findBatchFuture(collection: String, query: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.findBatch(collection, query, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def findWithOptionsWithHandler(collection: String, query: io.vertx.core.json.JsonObject, options: io.vertx.scala.ext.mongo.FindOptions)( resultHandler: io.vertx.core.AsyncResult [scala.collection.mutable.Buffer[io.vertx.core.json.JsonObject]] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.findWithOptions(collection, query, options.asJava, funcToMappedHandler[io.vertx.core.AsyncResult[java.util.List[io.vertx.core.json.JsonObject]], io.vertx.core.AsyncResult [scala.collection.mutable.Buffer[io.vertx.core.json.JsonObject]]](x => io.vertx.lang.scala.AsyncResult[java.util.List[io.vertx.core.json.JsonObject], scala.collection.mutable.Buffer[io.vertx.core.json.JsonObject]](x,x => if (x == null) null else x.asScala))(resultHandler))
-    this
+  def findWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, options: io.vertx.scala.ext.mongo.FindOptions): concurrent.Future[scala.collection.mutable.Buffer[io.vertx.core.json.JsonObject]] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.util.List[io.vertx.core.json.JsonObject],scala.collection.mutable.Buffer[io.vertx.core.json.JsonObject]]((x => if (x == null) null else x.asScala))
+    _asJava.findWithOptions(collection, query, options.asJava, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def findBatchWithOptionsWithHandler(collection: String, query: io.vertx.core.json.JsonObject, options: io.vertx.scala.ext.mongo.FindOptions)( resultHandler: io.vertx.core.AsyncResult [io.vertx.core.json.JsonObject] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.findBatchWithOptions(collection, query, options.asJava, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.core.json.JsonObject], io.vertx.core.AsyncResult [io.vertx.core.json.JsonObject]](x => io.vertx.lang.scala.AsyncResult[io.vertx.core.json.JsonObject, io.vertx.core.json.JsonObject](x,(x => x)))(resultHandler))
-    this
+  def findBatchWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, options: io.vertx.scala.ext.mongo.FindOptions): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.findBatchWithOptions(collection, query, options.asJava, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def findOneWithHandler(collection: String, query: io.vertx.core.json.JsonObject, fields: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [io.vertx.core.json.JsonObject] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.findOne(collection, query, fields, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.core.json.JsonObject], io.vertx.core.AsyncResult [io.vertx.core.json.JsonObject]](x => io.vertx.lang.scala.AsyncResult[io.vertx.core.json.JsonObject, io.vertx.core.json.JsonObject](x,(x => x)))(resultHandler))
-    this
+  def findOneFuture(collection: String, query: io.vertx.core.json.JsonObject, fields: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.findOne(collection, query, fields, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def countWithHandler(collection: String, query: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [Long] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.count(collection, query, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Long], io.vertx.core.AsyncResult [Long]](x => io.vertx.lang.scala.AsyncResult[java.lang.Long, Long](x,(x => x)))(resultHandler))
-    this
+  def countFuture(collection: String, query: io.vertx.core.json.JsonObject): concurrent.Future[Long] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
+    _asJava.count(collection, query, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def removeWithHandler(collection: String, query: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.remove(collection, query, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(resultHandler))
-    this
+  def removeFuture(collection: String, query: io.vertx.core.json.JsonObject): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.remove(collection, query, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def removeDocumentsWithHandler(collection: String, query: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [io.vertx.scala.ext.mongo.MongoClientDeleteResult] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.removeDocuments(collection, query, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.ext.mongo.MongoClientDeleteResult], io.vertx.core.AsyncResult [io.vertx.scala.ext.mongo.MongoClientDeleteResult]](x => io.vertx.lang.scala.AsyncResult[io.vertx.ext.mongo.MongoClientDeleteResult, io.vertx.scala.ext.mongo.MongoClientDeleteResult](x,(x => MongoClientDeleteResult(x))))(resultHandler))
-    this
+  def removeDocumentsFuture(collection: String, query: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.scala.ext.mongo.MongoClientDeleteResult] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.mongo.MongoClientDeleteResult,io.vertx.scala.ext.mongo.MongoClientDeleteResult]((x => MongoClientDeleteResult(x)))
+    _asJava.removeDocuments(collection, query, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def removeWithOptionsWithHandler(collection: String, query: io.vertx.core.json.JsonObject, writeOption: io.vertx.ext.mongo.WriteOption)( resultHandler: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.removeWithOptions(collection, query, writeOption, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(resultHandler))
-    this
+  def removeWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, writeOption: io.vertx.ext.mongo.WriteOption): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.removeWithOptions(collection, query, writeOption, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def removeDocumentsWithOptionsWithHandler(collection: String, query: io.vertx.core.json.JsonObject, writeOption: io.vertx.ext.mongo.WriteOption)( resultHandler: io.vertx.core.AsyncResult [io.vertx.scala.ext.mongo.MongoClientDeleteResult] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.removeDocumentsWithOptions(collection, query, writeOption, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.ext.mongo.MongoClientDeleteResult], io.vertx.core.AsyncResult [io.vertx.scala.ext.mongo.MongoClientDeleteResult]](x => io.vertx.lang.scala.AsyncResult[io.vertx.ext.mongo.MongoClientDeleteResult, io.vertx.scala.ext.mongo.MongoClientDeleteResult](x,(x => MongoClientDeleteResult(x))))(resultHandler))
-    this
+  def removeDocumentsWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, writeOption: io.vertx.ext.mongo.WriteOption): concurrent.Future[io.vertx.scala.ext.mongo.MongoClientDeleteResult] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.mongo.MongoClientDeleteResult,io.vertx.scala.ext.mongo.MongoClientDeleteResult]((x => MongoClientDeleteResult(x)))
+    _asJava.removeDocumentsWithOptions(collection, query, writeOption, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def removeOneWithHandler(collection: String, query: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.removeOne(collection, query, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(resultHandler))
-    this
+  def removeOneFuture(collection: String, query: io.vertx.core.json.JsonObject): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.removeOne(collection, query, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def removeDocumentWithHandler(collection: String, query: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [io.vertx.scala.ext.mongo.MongoClientDeleteResult] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.removeDocument(collection, query, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.ext.mongo.MongoClientDeleteResult], io.vertx.core.AsyncResult [io.vertx.scala.ext.mongo.MongoClientDeleteResult]](x => io.vertx.lang.scala.AsyncResult[io.vertx.ext.mongo.MongoClientDeleteResult, io.vertx.scala.ext.mongo.MongoClientDeleteResult](x,(x => MongoClientDeleteResult(x))))(resultHandler))
-    this
+  def removeDocumentFuture(collection: String, query: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.scala.ext.mongo.MongoClientDeleteResult] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.mongo.MongoClientDeleteResult,io.vertx.scala.ext.mongo.MongoClientDeleteResult]((x => MongoClientDeleteResult(x)))
+    _asJava.removeDocument(collection, query, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def removeOneWithOptionsWithHandler(collection: String, query: io.vertx.core.json.JsonObject, writeOption: io.vertx.ext.mongo.WriteOption)( resultHandler: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.removeOneWithOptions(collection, query, writeOption, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(resultHandler))
-    this
+  def removeOneWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, writeOption: io.vertx.ext.mongo.WriteOption): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.removeOneWithOptions(collection, query, writeOption, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def removeDocumentWithOptionsWithHandler(collection: String, query: io.vertx.core.json.JsonObject, writeOption: io.vertx.ext.mongo.WriteOption)( resultHandler: io.vertx.core.AsyncResult [io.vertx.scala.ext.mongo.MongoClientDeleteResult] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.removeDocumentWithOptions(collection, query, writeOption, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.ext.mongo.MongoClientDeleteResult], io.vertx.core.AsyncResult [io.vertx.scala.ext.mongo.MongoClientDeleteResult]](x => io.vertx.lang.scala.AsyncResult[io.vertx.ext.mongo.MongoClientDeleteResult, io.vertx.scala.ext.mongo.MongoClientDeleteResult](x,(x => MongoClientDeleteResult(x))))(resultHandler))
-    this
+  def removeDocumentWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, writeOption: io.vertx.ext.mongo.WriteOption): concurrent.Future[io.vertx.scala.ext.mongo.MongoClientDeleteResult] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.mongo.MongoClientDeleteResult,io.vertx.scala.ext.mongo.MongoClientDeleteResult]((x => MongoClientDeleteResult(x)))
+    _asJava.removeDocumentWithOptions(collection, query, writeOption, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def createCollectionWithHandler(collectionName: String)( resultHandler: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.createCollection(collectionName, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(resultHandler))
-    this
+  def createCollectionFuture(collectionName: String): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.createCollection(collectionName, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def getCollections(resultHandler: io.vertx.core.AsyncResult [scala.collection.mutable.Buffer[String]] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.getCollections(funcToMappedHandler[io.vertx.core.AsyncResult[java.util.List[java.lang.String]], io.vertx.core.AsyncResult [scala.collection.mutable.Buffer[String]]](x => io.vertx.lang.scala.AsyncResult[java.util.List[java.lang.String], scala.collection.mutable.Buffer[String]](x,x => if (x == null) null else x.asScala))(resultHandler))
-    this
+  def getCollectionsFuture(): concurrent.Future[scala.collection.mutable.Buffer[String]] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.util.List[java.lang.String],scala.collection.mutable.Buffer[String]]((x => if (x == null) null else x.asScala))
+    _asJava.getCollections(promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def dropCollectionWithHandler(collection: String)( resultHandler: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.dropCollection(collection, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(resultHandler))
-    this
+  def dropCollectionFuture(collection: String): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.dropCollection(collection, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def createIndexWithHandler(collection: String, key: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.createIndex(collection, key, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(resultHandler))
-    this
+  def createIndexFuture(collection: String, key: io.vertx.core.json.JsonObject): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.createIndex(collection, key, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def createIndexWithOptionsWithHandler(collection: String, key: io.vertx.core.json.JsonObject, options: io.vertx.scala.ext.mongo.IndexOptions)( resultHandler: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.createIndexWithOptions(collection, key, options.asJava, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(resultHandler))
-    this
+  def createIndexWithOptionsFuture(collection: String, key: io.vertx.core.json.JsonObject, options: io.vertx.scala.ext.mongo.IndexOptions): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.createIndexWithOptions(collection, key, options.asJava, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def listIndexesWithHandler(collection: String)( resultHandler: io.vertx.core.AsyncResult [io.vertx.core.json.JsonArray] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.listIndexes(collection, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.core.json.JsonArray], io.vertx.core.AsyncResult [io.vertx.core.json.JsonArray]](x => io.vertx.lang.scala.AsyncResult[io.vertx.core.json.JsonArray, io.vertx.core.json.JsonArray](x,(x => x)))(resultHandler))
-    this
+  def listIndexesFuture(collection: String): concurrent.Future[io.vertx.core.json.JsonArray] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
+    _asJava.listIndexes(collection, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def dropIndexWithHandler(collection: String, indexName: String)( resultHandler: io.vertx.core.AsyncResult [Unit] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.dropIndex(collection, indexName, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(resultHandler))
-    this
+  def dropIndexFuture(collection: String, indexName: String): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.dropIndex(collection, indexName, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def runCommandWithHandler(commandName: String, command: io.vertx.core.json.JsonObject)( resultHandler: io.vertx.core.AsyncResult [io.vertx.core.json.JsonObject] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.runCommand(commandName, command, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.core.json.JsonObject], io.vertx.core.AsyncResult [io.vertx.core.json.JsonObject]](x => io.vertx.lang.scala.AsyncResult[io.vertx.core.json.JsonObject, io.vertx.core.json.JsonObject](x,(x => x)))(resultHandler))
-    this
+  def runCommandFuture(commandName: String, command: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.runCommand(commandName, command, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def distinctWithHandler(collection: String, fieldName: String, resultClassname: String)( resultHandler: io.vertx.core.AsyncResult [io.vertx.core.json.JsonArray] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.distinct(collection, fieldName, resultClassname, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.core.json.JsonArray], io.vertx.core.AsyncResult [io.vertx.core.json.JsonArray]](x => io.vertx.lang.scala.AsyncResult[io.vertx.core.json.JsonArray, io.vertx.core.json.JsonArray](x,(x => x)))(resultHandler))
-    this
+  def distinctFuture(collection: String, fieldName: String, resultClassname: String): concurrent.Future[io.vertx.core.json.JsonArray] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
+    _asJava.distinct(collection, fieldName, resultClassname, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
-  def distinctBatchWithHandler(collection: String, fieldName: String, resultClassname: String)( resultHandler: io.vertx.core.AsyncResult [io.vertx.core.json.JsonObject] => Unit): io.vertx.scala.ext.mongo.MongoService = {
-    _asJava.distinctBatch(collection, fieldName, resultClassname, funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.core.json.JsonObject], io.vertx.core.AsyncResult [io.vertx.core.json.JsonObject]](x => io.vertx.lang.scala.AsyncResult[io.vertx.core.json.JsonObject, io.vertx.core.json.JsonObject](x,(x => x)))(resultHandler))
-    this
+  def distinctBatchFuture(collection: String, fieldName: String, resultClassname: String): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.distinctBatch(collection, fieldName, resultClassname, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
   def close(): Unit = {
@@ -226,7 +262,9 @@ object MongoService {
 
   def apply(_asJava: io.vertx.ext.mongo.MongoService): io.vertx.scala.ext.mongo.MongoService =
     new io.vertx.scala.ext.mongo.MongoService(_asJava)
+
   def createEventBusProxy(vertx: io.vertx.scala.core.Vertx, address: String): io.vertx.scala.ext.mongo.MongoService = {
     MongoService.apply(io.vertx.ext.mongo.MongoService.createEventBusProxy(vertx.asJava.asInstanceOf[io.vertx.core.Vertx], address))
   }
+
 }

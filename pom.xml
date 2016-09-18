@@ -295,6 +295,7 @@
 
   <modules>
     <module>vertx-sql-common-scala</module>
+    <module>vertx-bridge-common-scala</module>
     <module>vertx-jdbc-client-scala</module>
     <module>vertx-mongo-client-scala</module>
     <module>vertx-mongo-service-scala</module>
@@ -306,5 +307,16 @@
     <module>vertx-auth-jdbc-scala</module>
     <module>vertx-web-scala</module>
     <module>vertx-mysql-postgresql-client-scala</module>
+    <module>vertx-jgroups-scala</module>
+    <module>vertx-mail-client-scala</module>
+    <module>vertx-proton-scala</module>
+    <module>vertx-rabbitmq-client-scala</module>
+    <module>vertx-redis-client-scala</module>
+    <module>vertx-stomp-scala</module>
+    <module>vertx-tcp-eventbus-bridge-scala</module>
+    <module>vertx-camel-bridge-scala</module>
+    <module>vertx-hazelcast-scala</module>
+    <module>vertx-ignite-scala</module>
+    <module>vertx-zookeeper-scala</module>
   </modules>
 </project>

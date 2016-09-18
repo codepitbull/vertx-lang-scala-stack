@@ -54,16 +54,21 @@ object Locale {
 
   def apply(_asJava: io.vertx.ext.web.Locale): io.vertx.scala.ext.web.Locale =
     new io.vertx.scala.ext.web.Locale(_asJava)
+
   def create(): io.vertx.scala.ext.web.Locale = {
     Locale.apply(io.vertx.ext.web.Locale.create())
   }
+
   def create(language: String): io.vertx.scala.ext.web.Locale = {
     Locale.apply(io.vertx.ext.web.Locale.create(language))
   }
+
   def create(language: String, country: String): io.vertx.scala.ext.web.Locale = {
     Locale.apply(io.vertx.ext.web.Locale.create(language, country))
   }
+
   def create(language: String, country: String, variant: String): io.vertx.scala.ext.web.Locale = {
     Locale.apply(io.vertx.ext.web.Locale.create(language, country, variant))
   }
+
 }

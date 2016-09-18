@@ -19,6 +19,7 @@ package io.vertx.scala.ext.auth.mongo
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
+import io.vertx.scala.ext.auth.User
 import io.vertx.scala.ext.mongo.MongoClient
 import io.vertx.core.json.JsonObject
 import io.vertx.core.Handler
@@ -209,10 +210,12 @@ class MongoAuth(private val _asJava: io.vertx.ext.auth.mongo.MongoAuth) {
     * @param password the passsword in clear text, will be adapted following the definitions of the defined [[HashStrategy]]
     * @param roles a list of roles to be set
     * @param permissions a list of permissions to be set
-    * @param resultHandler the ResultHandler will be provided with the id of the generated record
+    * @return the ResultHandler will be provided with the id of the generated record
     */
-  def insertUserWithHandler(username: String, password: String, roles: scala.collection.mutable.Buffer[String], permissions: scala.collection.mutable.Buffer[String])( resultHandler: io.vertx.core.AsyncResult [String] => Unit): Unit = {
-    _asJava.insertUser(username, password, roles.map(x => if(x == null) null else x:java.lang.String).asJava, permissions.map(x => if(x == null) null else x:java.lang.String).asJava, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.String], io.vertx.core.AsyncResult [String]](x => io.vertx.lang.scala.AsyncResult[java.lang.String, String](x,(x => x)))(resultHandler))
+  def insertUserFuture(username: String, password: String, roles: scala.collection.mutable.Buffer[String], permissions: scala.collection.mutable.Buffer[String]): concurrent.Future[String] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.String,String]((x => x))
+    _asJava.insertUser(username, password, roles.map(x => if(x == null) null else x:java.lang.String).asJava, permissions.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
 }
@@ -221,7 +224,9 @@ object MongoAuth {
 
   def apply(_asJava: io.vertx.ext.auth.mongo.MongoAuth): io.vertx.scala.ext.auth.mongo.MongoAuth =
     new io.vertx.scala.ext.auth.mongo.MongoAuth(_asJava)
+
   def create(mongoClient: io.vertx.scala.ext.mongo.MongoClient, config: io.vertx.core.json.JsonObject): io.vertx.scala.ext.auth.mongo.MongoAuth = {
     MongoAuth.apply(io.vertx.ext.auth.mongo.MongoAuth.create(mongoClient.asJava.asInstanceOf[io.vertx.ext.mongo.MongoClient], config))
   }
+
 }

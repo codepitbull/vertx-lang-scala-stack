@@ -40,13 +40,17 @@ object TimeoutHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.TimeoutHandler): io.vertx.scala.ext.web.handler.TimeoutHandler =
     new io.vertx.scala.ext.web.handler.TimeoutHandler(_asJava)
+
   def create(): io.vertx.scala.ext.web.handler.TimeoutHandler = {
     TimeoutHandler.apply(io.vertx.ext.web.handler.TimeoutHandler.create())
   }
+
   def create(timeout: Long): io.vertx.scala.ext.web.handler.TimeoutHandler = {
     TimeoutHandler.apply(io.vertx.ext.web.handler.TimeoutHandler.create(timeout))
   }
+
   def create(timeout: Long, errorCode: Int): io.vertx.scala.ext.web.handler.TimeoutHandler = {
     TimeoutHandler.apply(io.vertx.ext.web.handler.TimeoutHandler.create(timeout, errorCode))
   }
+
 }

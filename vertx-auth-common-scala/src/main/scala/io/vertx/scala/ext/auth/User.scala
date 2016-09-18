@@ -34,12 +34,12 @@ class User(private val _asJava: io.vertx.ext.auth.User) {
   /**
     * Is the user authorised to
     * @param authority the authority - what this really means is determined by the specific implementation. It might represent a permission to access a resource e.g. `printers:printer34` or it might represent authority to a role in a roles based model, e.g. `role:admin`.
-    * @param resultHandler handler that will be called with an [[io.vertx.scala.core.AsyncResult]] containing the value `true` if the they has the authority or `false` otherwise.
-    * @return the User to enable fluent use
+    * @return future that will be called with an [[io.vertx.scala.core.AsyncResult]] containing the value `true` if the they has the authority or `false` otherwise.
     */
-  def isAuthorisedWithHandler(authority: String)( resultHandler: io.vertx.core.AsyncResult [Boolean] => Unit): io.vertx.scala.ext.auth.User = {
-    _asJava.isAuthorised(authority, funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Boolean], io.vertx.core.AsyncResult [Boolean]](x => io.vertx.lang.scala.AsyncResult[java.lang.Boolean, Boolean](x,(x => x)))(resultHandler))
-    this
+  def isAuthorisedFuture(authority: String): concurrent.Future[Boolean] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Boolean,Boolean]((x => x))
+    _asJava.isAuthorised(authority, promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
   /**
@@ -81,4 +81,5 @@ object User {
 
   def apply(_asJava: io.vertx.ext.auth.User): io.vertx.scala.ext.auth.User =
     new io.vertx.scala.ext.auth.User(_asJava)
+
 }

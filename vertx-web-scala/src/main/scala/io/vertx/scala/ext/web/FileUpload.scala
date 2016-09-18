@@ -83,4 +83,5 @@ object FileUpload {
 
   def apply(_asJava: io.vertx.ext.web.FileUpload): io.vertx.scala.ext.web.FileUpload =
     new io.vertx.scala.ext.web.FileUpload(_asJava)
+
 }

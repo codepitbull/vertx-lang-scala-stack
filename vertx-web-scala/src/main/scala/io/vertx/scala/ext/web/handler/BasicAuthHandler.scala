@@ -60,10 +60,13 @@ object BasicAuthHandler {
 
   def apply(_asJava: io.vertx.ext.web.handler.BasicAuthHandler): io.vertx.scala.ext.web.handler.BasicAuthHandler =
     new io.vertx.scala.ext.web.handler.BasicAuthHandler(_asJava)
+
   def create(authProvider: io.vertx.scala.ext.auth.AuthProvider): io.vertx.scala.ext.web.handler.AuthHandler = {
     AuthHandler.apply(io.vertx.ext.web.handler.BasicAuthHandler.create(authProvider.asJava.asInstanceOf[io.vertx.ext.auth.AuthProvider]))
   }
+
   def create(authProvider: io.vertx.scala.ext.auth.AuthProvider, realm: String): io.vertx.scala.ext.web.handler.AuthHandler = {
     AuthHandler.apply(io.vertx.ext.web.handler.BasicAuthHandler.create(authProvider.asJava.asInstanceOf[io.vertx.ext.auth.AuthProvider], realm))
   }
+
 }

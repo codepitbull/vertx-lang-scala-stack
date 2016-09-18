@@ -40,19 +40,23 @@ class AsyncSQLClient(private val _asJava: io.vertx.ext.asyncsql.AsyncSQLClient) 
   /**
     * Close the client and release all resources.
     * Call the handler when close is complete.
-    * @param whenDone handler that will be called when close is complete
+    * @return future that will be called when close is complete
     */
-  def close(whenDone: io.vertx.core.AsyncResult [Unit] => Unit): Unit = {
-    _asJava.close(funcToMappedHandler[io.vertx.core.AsyncResult[java.lang.Void], io.vertx.core.AsyncResult [Unit]](x => io.vertx.lang.scala.AsyncResult[java.lang.Void, Unit](x,(x => ())))(whenDone))
+  def closeFuture(): concurrent.Future[Unit] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
+    _asJava.close(promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
   /**
     * Returns a connection that can be used to perform SQL operations on. It's important to remember to close the
     * connection when you are done, so it is returned to the pool.
-    * @param handler the handler which is called when the <code>JdbcConnection</code> object is ready for use.
+    * @return the future which is called when the <code>JdbcConnection</code> object is ready for use.
     */
-  def getConnection(handler: io.vertx.core.AsyncResult [io.vertx.scala.ext.sql.SQLConnection] => Unit): Unit = {
-    _asJava.getConnection(funcToMappedHandler[io.vertx.core.AsyncResult[io.vertx.ext.sql.SQLConnection], io.vertx.core.AsyncResult [io.vertx.scala.ext.sql.SQLConnection]](x => io.vertx.lang.scala.AsyncResult[io.vertx.ext.sql.SQLConnection, io.vertx.scala.ext.sql.SQLConnection](x,(x => if (x == null) null else SQLConnection.apply(x))))(handler))
+  def getConnectionFuture(): concurrent.Future[io.vertx.scala.ext.sql.SQLConnection] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.sql.SQLConnection,io.vertx.scala.ext.sql.SQLConnection]((x => if (x == null) null else SQLConnection.apply(x)))
+    _asJava.getConnection(promiseAndHandler._1)
+    promiseAndHandler._2.future
   }
 
 }
@@ -61,4 +65,5 @@ object AsyncSQLClient {
 
   def apply(_asJava: io.vertx.ext.asyncsql.AsyncSQLClient): io.vertx.scala.ext.asyncsql.AsyncSQLClient =
     new io.vertx.scala.ext.asyncsql.AsyncSQLClient(_asJava)
+
 }

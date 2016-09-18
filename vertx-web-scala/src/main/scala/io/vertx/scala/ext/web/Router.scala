@@ -384,7 +384,9 @@ object Router {
 
   def apply(_asJava: io.vertx.ext.web.Router): io.vertx.scala.ext.web.Router =
     new io.vertx.scala.ext.web.Router(_asJava)
+
   def router(vertx: io.vertx.scala.core.Vertx): io.vertx.scala.ext.web.Router = {
     Router.apply(io.vertx.ext.web.Router.router(vertx.asJava.asInstanceOf[io.vertx.core.Vertx]))
   }
+
 }

@@ -19,8 +19,10 @@ package io.vertx.scala.ext.auth.jwt
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
+import io.vertx.scala.ext.auth.User
 import io.vertx.scala.core.Vertx
 import io.vertx.core.json.JsonObject
+import io.vertx.core.Handler
 import io.vertx.ext.auth.jwt.JWTOptions
 import io.vertx.scala.ext.auth.AuthProvider
 
@@ -47,7 +49,9 @@ object JWTAuth {
 
   def apply(_asJava: io.vertx.ext.auth.jwt.JWTAuth): io.vertx.scala.ext.auth.jwt.JWTAuth =
     new io.vertx.scala.ext.auth.jwt.JWTAuth(_asJava)
+
   def create(vertx: io.vertx.scala.core.Vertx, config: io.vertx.core.json.JsonObject): io.vertx.scala.ext.auth.jwt.JWTAuth = {
     JWTAuth.apply(io.vertx.ext.auth.jwt.JWTAuth.create(vertx.asJava.asInstanceOf[io.vertx.core.Vertx], config))
   }
+
 }

@@ -19,7 +19,10 @@ package io.vertx.scala.ext.auth.jdbc
 import io.vertx.lang.scala.HandlerOps._
 import scala.compat.java8.FunctionConverters._
 import scala.collection.JavaConverters._
+import io.vertx.scala.ext.auth.User
 import io.vertx.scala.ext.jdbc.JDBCClient
+import io.vertx.core.json.JsonObject
+import io.vertx.core.Handler
 import io.vertx.scala.ext.auth.AuthProvider
 
 /**
@@ -71,7 +74,9 @@ object JDBCAuth {
 
   def apply(_asJava: io.vertx.ext.auth.jdbc.JDBCAuth): io.vertx.scala.ext.auth.jdbc.JDBCAuth =
     new io.vertx.scala.ext.auth.jdbc.JDBCAuth(_asJava)
+
   def create(client: io.vertx.scala.ext.jdbc.JDBCClient): io.vertx.scala.ext.auth.jdbc.JDBCAuth = {
     JDBCAuth.apply(io.vertx.ext.auth.jdbc.JDBCAuth.create(client.asJava.asInstanceOf[io.vertx.ext.jdbc.JDBCClient]))
   }
+
 }
