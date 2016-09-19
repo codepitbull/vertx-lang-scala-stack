@@ -40,7 +40,7 @@ class MailClient(private val _asJava: io.vertx.ext.mail.MailClient) {
     * @return will be called when the operation is finished or it fails (may be null to ignore the result)
     */
   def sendMailFuture(email: io.vertx.scala.ext.mail.MailMessage): concurrent.Future[io.vertx.scala.ext.mail.MailResult] = {
-    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.mail.MailResult,io.vertx.scala.ext.mail.MailResult]((x => MailResult(x)))
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.mail.MailResult,io.vertx.scala.ext.mail.MailResult]((x => io.vertx.scala.ext.mail.MailResult(x)))
     _asJava.sendMail(email.asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }

@@ -318,5 +318,14 @@
     <module>vertx-hazelcast-scala</module>
     <module>vertx-ignite-scala</module>
     <module>vertx-zookeeper-scala</module>
+    <module>vertx-amqp-bridge-scala</module>
+    <module>vertx-dropwizard-metrics-scala</module>
+    <module>vertx-hawkular-metrics-scala</module>
+    <module>vertx-reactive-streams-scala</module>
+    <module>vertx-shell-scala</module>
+    <module>vertx-sync-scala</module>
+    <module>vertx-service-discovery-scala</module>
+    <!--<module>vertx-circuit-breaker-scala</module>-->
+    <!--<module>vertx-unit-scala</module>-->
   </modules>
 </project>

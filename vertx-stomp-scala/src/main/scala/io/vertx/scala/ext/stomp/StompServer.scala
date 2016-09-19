@@ -148,7 +148,7 @@ class StompServer(private val _asJava: io.vertx.ext.stomp.StompServer) {
     * @return the server optionssee <a href="../../../../../../../cheatsheet/StompServerOptions.html">StompServerOptions</a>
     */
   def options(): io.vertx.scala.ext.stomp.StompServerOptions = {
-    StompServerOptions(_asJava.options())
+    io.vertx.scala.ext.stomp.StompServerOptions(_asJava.options())
   }
 
   /**

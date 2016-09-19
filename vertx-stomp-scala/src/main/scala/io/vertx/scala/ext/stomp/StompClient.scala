@@ -129,7 +129,7 @@ class StompClient(private val _asJava: io.vertx.ext.stomp.StompClient) {
     * @return the client's options.see <a href="../../../../../../../cheatsheet/StompClientOptions.html">StompClientOptions</a>
     */
   def options(): io.vertx.scala.ext.stomp.StompClientOptions = {
-    StompClientOptions(_asJava.options())
+    io.vertx.scala.ext.stomp.StompClientOptions(_asJava.options())
   }
 
   /**

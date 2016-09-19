@@ -39,11 +39,11 @@ object Frames {
     new io.vertx.scala.ext.stomp.Frames(_asJava)
 
   def createErrorFrame(message: String, headers: Map[String, String], body: String): io.vertx.scala.ext.stomp.Frame = {
-    Frame(io.vertx.ext.stomp.Frames.createErrorFrame(message, headers.map(kv => (kv._1:java.lang.String, kv._2:java.lang.String)).asJava, body))
+    io.vertx.scala.ext.stomp.Frame(io.vertx.ext.stomp.Frames.createErrorFrame(message, headers.map(kv => (kv._1:java.lang.String, kv._2:java.lang.String)).asJava, body))
   }
 
   def createReceiptFrame(receiptId: String, headers: Map[String, String]): io.vertx.scala.ext.stomp.Frame = {
-    Frame(io.vertx.ext.stomp.Frames.createReceiptFrame(receiptId, headers.map(kv => (kv._1:java.lang.String, kv._2:java.lang.String)).asJava))
+    io.vertx.scala.ext.stomp.Frame(io.vertx.ext.stomp.Frames.createReceiptFrame(receiptId, headers.map(kv => (kv._1:java.lang.String, kv._2:java.lang.String)).asJava))
   }
 
   def handleReceipt(frame: io.vertx.scala.ext.stomp.Frame, connection: io.vertx.scala.ext.stomp.StompServerConnection): Unit = {
@@ -51,7 +51,7 @@ object Frames {
   }
 
   def ping(): io.vertx.scala.ext.stomp.Frame = {
-    Frame(io.vertx.ext.stomp.Frames.ping())
+    io.vertx.scala.ext.stomp.Frame(io.vertx.ext.stomp.Frames.ping())
   }
 
 }

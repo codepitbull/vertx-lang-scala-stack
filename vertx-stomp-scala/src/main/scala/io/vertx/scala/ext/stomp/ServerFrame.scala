@@ -33,7 +33,7 @@ class ServerFrame(private val _asJava: io.vertx.ext.stomp.ServerFrame) {
     * @return the received framesee <a href="../../../../../../../cheatsheet/Frame.html">Frame</a>
     */
   def frame(): io.vertx.scala.ext.stomp.Frame = {
-    Frame(_asJava.frame())
+    io.vertx.scala.ext.stomp.Frame(_asJava.frame())
   }
 
   /**

@@ -39,7 +39,7 @@ class Acknowledgement(private val _asJava: io.vertx.ext.stomp.Acknowledgement) {
     * @return the subscription framesee <a href="../../../../../../../cheatsheet/Frame.html">Frame</a>
     */
   def subscription(): io.vertx.scala.ext.stomp.Frame = {
-    Frame(_asJava.subscription())
+    io.vertx.scala.ext.stomp.Frame(_asJava.subscription())
   }
 
   /**
