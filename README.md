@@ -2,15 +2,10 @@
 
 Project for building scala-flavored vertx-modules.
 
-Ignored ones:
-vertx-service-discovery
-vertx-unit => not building because of a type issue
-vertx-circuit-breaker-scala => not building because of rx dependency
-vertx-embedded-mongo-db => not generated for other languages either
-vertx-service-proxy => not generated for other languages either
-vertx-jca => no need to generate
-vertx-http-service-factory => not exposed as api
-vertx-maven-service-factory => not exposed as api
-vertx-service-factory => not exposed as api
+##Problems
 
-Broken doc-link: vertx-http-service-factory
+vertx-unit can't be built because of a missing type-param in EventBusCollector.scala:41.
+
+Reason:
+
+In EventBusCollector.java there is this method  _MessageConsumer register(String address);_

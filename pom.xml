@@ -325,7 +325,7 @@
     <module>vertx-shell-scala</module>
     <module>vertx-sync-scala</module>
     <module>vertx-service-discovery-scala</module>
-    <!--<module>vertx-circuit-breaker-scala</module>-->
+    <module>vertx-circuit-breaker-scala</module>
     <!--<module>vertx-unit-scala</module>-->
   </modules>
 </project>

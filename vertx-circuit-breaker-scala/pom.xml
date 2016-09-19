@@ -27,6 +27,19 @@
       <artifactId>${vertx-module}</artifactId>
       <version>${stack.version}</version>
     </dependency>
+    <!-- TODO most certainly a bug -->
+    <dependency>
+      <groupId>com.netflix.rxjava</groupId>
+      <artifactId>rxjava-core</artifactId>
+      <version>0.20.7</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.netflix.hystrix</groupId>
+      <artifactId>hystrix-core</artifactId>
+      <version>1.5.5</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
       <groupId>io.vertx</groupId>
       <artifactId>${vertx-module}</artifactId>
