@@ -28,12 +28,15 @@ class MigrateOptions(val asJava: io.vertx.redis.op.MigrateOptions) {
 object MigrateOptions {
   type MigrateOptionsJava = io.vertx.redis.op.MigrateOptions
   
+  def apply() = {
+    new MigrateOptions(new MigrateOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: MigrateOptionsJava) = {
     if(t != null)
       new MigrateOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):MigrateOptions = {

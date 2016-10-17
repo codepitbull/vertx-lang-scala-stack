@@ -61,8 +61,8 @@ class BridgeEvent(private val _asJava: io.vertx.ext.web.handler.sockjs.BridgeEve
   }
 
   def completer(): io.vertx.core.AsyncResult [Boolean] => Unit = {
-    if(cached_0 == null) {
-      cached_0=    handlerToMappedFunction[io.vertx.core.AsyncResult[java.lang.Boolean], io.vertx.core.AsyncResult[Boolean]](s => if(s.failed()) io.vertx.lang.scala.ScalaAsyncResult(cause = s.cause()) else io.vertx.lang.scala.ScalaAsyncResult(result = s.result)) (_asJava.completer())
+    if (cached_0 == null) {
+      cached_0=    handlerToMappedFunction[io.vertx.core.AsyncResult[java.lang.Boolean], io.vertx.core.AsyncResult[Boolean]](s => if (s.failed()) io.vertx.lang.scala.ScalaAsyncResult(cause = s.cause()) else io.vertx.lang.scala.ScalaAsyncResult(result = s.result)) (_asJava.completer())
     }
     cached_0
   }
@@ -71,7 +71,7 @@ class BridgeEvent(private val _asJava: io.vertx.ext.web.handler.sockjs.BridgeEve
     * @return the type of the event
     */
   def `type`(): io.vertx.ext.web.handler.sockjs.BridgeEventType = {
-    if(cached_1 == null) {
+    if (cached_1 == null) {
       cached_1=    _asJava.`type`()
     }
     cached_1
@@ -81,7 +81,7 @@ class BridgeEvent(private val _asJava: io.vertx.ext.web.handler.sockjs.BridgeEve
     * Use [[io.vertx.scala.ext.web.handler.sockjs.BridgeEvent#getRawMessage]] instead, will be removed in 3.3
     */
   def rawMessage(): io.vertx.core.json.JsonObject = {
-    if(cached_2 == null) {
+    if (cached_2 == null) {
       cached_2=    _asJava.rawMessage()
     }
     cached_2
@@ -113,7 +113,7 @@ class BridgeEvent(private val _asJava: io.vertx.ext.web.handler.sockjs.BridgeEve
     * @return the SockJSSocket instance
     */
   def socket(): io.vertx.scala.ext.web.handler.sockjs.SockJSSocket = {
-    if(cached_3 == null) {
+    if (cached_3 == null) {
       cached_3=    SockJSSocket.apply(_asJava.socket())
     }
     cached_3

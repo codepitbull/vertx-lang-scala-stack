@@ -52,12 +52,15 @@ class GeoMember(val asJava: io.vertx.redis.op.GeoMember) {
 object GeoMember {
   type GeoMemberJava = io.vertx.redis.op.GeoMember
   
+  def apply() = {
+    new GeoMember(new GeoMemberJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: GeoMemberJava) = {
     if(t != null)
       new GeoMember(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):GeoMember = {

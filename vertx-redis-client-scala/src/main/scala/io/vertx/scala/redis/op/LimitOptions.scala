@@ -28,12 +28,15 @@ class LimitOptions(val asJava: io.vertx.redis.op.LimitOptions) {
 object LimitOptions {
   type LimitOptionsJava = io.vertx.redis.op.LimitOptions
   
+  def apply() = {
+    new LimitOptions(new LimitOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: LimitOptionsJava) = {
     if(t != null)
       new LimitOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):LimitOptions = {

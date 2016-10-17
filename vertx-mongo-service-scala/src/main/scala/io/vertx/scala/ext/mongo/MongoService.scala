@@ -138,6 +138,42 @@ class MongoService(private val _asJava: io.vertx.ext.mongo.MongoService) {
     promiseAndHandler._2.future
   }
 
+  def findOneAndUpdateFuture(collection: String, query: io.vertx.core.json.JsonObject, update: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.findOneAndUpdate(collection, query, update, promiseAndHandler._1)
+    promiseAndHandler._2.future
+  }
+
+  def findOneAndUpdateWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, update: io.vertx.core.json.JsonObject, findOptions: io.vertx.scala.ext.mongo.FindOptions, updateOptions: io.vertx.scala.ext.mongo.UpdateOptions): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.findOneAndUpdateWithOptions(collection, query, update, findOptions.asJava, updateOptions.asJava, promiseAndHandler._1)
+    promiseAndHandler._2.future
+  }
+
+  def findOneAndReplaceFuture(collection: String, query: io.vertx.core.json.JsonObject, replace: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.findOneAndReplace(collection, query, replace, promiseAndHandler._1)
+    promiseAndHandler._2.future
+  }
+
+  def findOneAndReplaceWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, update: io.vertx.core.json.JsonObject, findOptions: io.vertx.scala.ext.mongo.FindOptions, updateOptions: io.vertx.scala.ext.mongo.UpdateOptions): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.findOneAndReplaceWithOptions(collection, query, update, findOptions.asJava, updateOptions.asJava, promiseAndHandler._1)
+    promiseAndHandler._2.future
+  }
+
+  def findOneAndDeleteFuture(collection: String, query: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.findOneAndDelete(collection, query, promiseAndHandler._1)
+    promiseAndHandler._2.future
+  }
+
+  def findOneAndDeleteWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, findOptions: io.vertx.scala.ext.mongo.FindOptions): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.findOneAndDeleteWithOptions(collection, query, findOptions.asJava, promiseAndHandler._1)
+    promiseAndHandler._2.future
+  }
+
   def countFuture(collection: String, query: io.vertx.core.json.JsonObject): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
     _asJava.count(collection, query, promiseAndHandler._1)

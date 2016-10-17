@@ -98,12 +98,15 @@ class Record(val asJava: io.vertx.servicediscovery.Record) {
 object Record {
   type RecordJava = io.vertx.servicediscovery.Record
   
+  def apply() = {
+    new Record(new RecordJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: RecordJava) = {
     if(t != null)
       new Record(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):Record = {

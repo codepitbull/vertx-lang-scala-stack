@@ -71,12 +71,15 @@ class SockJSHandlerOptions(val asJava: io.vertx.ext.web.handler.sockjs.SockJSHan
 object SockJSHandlerOptions {
   type SockJSHandlerOptionsJava = io.vertx.ext.web.handler.sockjs.SockJSHandlerOptions
   
+  def apply() = {
+    new SockJSHandlerOptions(new SockJSHandlerOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: SockJSHandlerOptionsJava) = {
     if(t != null)
       new SockJSHandlerOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):SockJSHandlerOptions = {

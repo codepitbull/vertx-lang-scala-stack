@@ -163,7 +163,7 @@ class Job(private val _asJava: io.vertx.ext.shell.system.Job) {
     * @return the first process in the job
     */
   def process(): io.vertx.scala.ext.shell.system.Process = {
-    if(cached_0 == null) {
+    if (cached_0 == null) {
       cached_0=    Process.apply(_asJava.process())
     }
     cached_0

@@ -220,12 +220,15 @@ class VertxHawkularOptions(val asJava: io.vertx.ext.hawkular.VertxHawkularOption
 object VertxHawkularOptions {
   type VertxHawkularOptionsJava = io.vertx.ext.hawkular.VertxHawkularOptions
   
+  def apply() = {
+    new VertxHawkularOptions(new VertxHawkularOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: VertxHawkularOptionsJava) = {
     if(t != null)
       new VertxHawkularOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):VertxHawkularOptions = {

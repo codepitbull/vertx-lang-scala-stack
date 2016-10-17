@@ -98,12 +98,15 @@ class CircuitBreakerOptions(val asJava: io.vertx.circuitbreaker.CircuitBreakerOp
 object CircuitBreakerOptions {
   type CircuitBreakerOptionsJava = io.vertx.circuitbreaker.CircuitBreakerOptions
   
+  def apply() = {
+    new CircuitBreakerOptions(new CircuitBreakerOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: CircuitBreakerOptionsJava) = {
     if(t != null)
       new CircuitBreakerOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):CircuitBreakerOptions = {

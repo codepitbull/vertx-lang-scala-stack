@@ -103,12 +103,15 @@ class MailAttachment(val asJava: io.vertx.ext.mail.MailAttachment) {
 object MailAttachment {
   type MailAttachmentJava = io.vertx.ext.mail.MailAttachment
   
+  def apply() = {
+    new MailAttachment(new MailAttachmentJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: MailAttachmentJava) = {
     if(t != null)
       new MailAttachment(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):MailAttachment = {

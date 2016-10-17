@@ -62,12 +62,15 @@ class ShellServerOptions(val asJava: io.vertx.ext.shell.ShellServerOptions) {
 object ShellServerOptions {
   type ShellServerOptionsJava = io.vertx.ext.shell.ShellServerOptions
   
+  def apply() = {
+    new ShellServerOptions(new ShellServerOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: ShellServerOptionsJava) = {
     if(t != null)
       new ShellServerOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):ShellServerOptions = {

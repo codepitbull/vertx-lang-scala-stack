@@ -77,12 +77,15 @@ class ServiceDiscoveryOptions(val asJava: io.vertx.servicediscovery.ServiceDisco
 object ServiceDiscoveryOptions {
   type ServiceDiscoveryOptionsJava = io.vertx.servicediscovery.ServiceDiscoveryOptions
   
+  def apply() = {
+    new ServiceDiscoveryOptions(new ServiceDiscoveryOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: ServiceDiscoveryOptionsJava) = {
     if(t != null)
       new ServiceDiscoveryOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):ServiceDiscoveryOptions = {

@@ -51,12 +51,15 @@ class ShiroAuthOptions(val asJava: io.vertx.ext.auth.shiro.ShiroAuthOptions) {
 object ShiroAuthOptions {
   type ShiroAuthOptionsJava = io.vertx.ext.auth.shiro.ShiroAuthOptions
   
+  def apply() = {
+    new ShiroAuthOptions(new ShiroAuthOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: ShiroAuthOptionsJava) = {
     if(t != null)
       new ShiroAuthOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):ShiroAuthOptions = {

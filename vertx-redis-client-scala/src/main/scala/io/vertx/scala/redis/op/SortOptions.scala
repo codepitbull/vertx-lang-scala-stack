@@ -40,12 +40,15 @@ class SortOptions(val asJava: io.vertx.redis.op.SortOptions) {
 object SortOptions {
   type SortOptionsJava = io.vertx.redis.op.SortOptions
   
+  def apply() = {
+    new SortOptions(new SortOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: SortOptionsJava) = {
     if(t != null)
       new SortOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):SortOptions = {

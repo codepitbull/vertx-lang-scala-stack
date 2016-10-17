@@ -59,12 +59,15 @@ class BridgeOptions(val asJava: io.vertx.ext.bridge.BridgeOptions) {
 object BridgeOptions {
   type BridgeOptionsJava = io.vertx.ext.bridge.BridgeOptions
   
+  def apply() = {
+    new BridgeOptions(new BridgeOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: BridgeOptionsJava) = {
     if(t != null)
       new BridgeOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):BridgeOptions = {

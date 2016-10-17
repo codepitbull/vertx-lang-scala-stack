@@ -33,12 +33,15 @@ class MongoClientDeleteResult(val asJava: io.vertx.ext.mongo.MongoClientDeleteRe
 object MongoClientDeleteResult {
   type MongoClientDeleteResultJava = io.vertx.ext.mongo.MongoClientDeleteResult
   
+  def apply() = {
+    new MongoClientDeleteResult(new MongoClientDeleteResultJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: MongoClientDeleteResultJava) = {
     if(t != null)
       new MongoClientDeleteResult(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):MongoClientDeleteResult = {

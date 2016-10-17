@@ -50,7 +50,7 @@ class JWTAuthHandler(private val _asJava: io.vertx.ext.web.handler.JWTAuthHandle
     * @return a reference to this, so the API can be used fluently
     */
   def addAuthorities(authorities: Set[String]): io.vertx.scala.ext.web.handler.AuthHandler = {
-    _asJava.addAuthorities(authorities.map(x => if(x == null) null else x:java.lang.String).asJava)
+    _asJava.addAuthorities(authorities.map(x => if (x == null) null else x:java.lang.String).asJava)
     this
   }
 
@@ -60,7 +60,7 @@ class JWTAuthHandler(private val _asJava: io.vertx.ext.web.handler.JWTAuthHandle
     * @return a reference to this for fluency
     */
   def setAudience(audience: scala.collection.mutable.Buffer[String]): io.vertx.scala.ext.web.handler.JWTAuthHandler = {
-    _asJava.setAudience(audience.map(x => if(x == null) null else x:java.lang.String).asJava)
+    _asJava.setAudience(audience.map(x => if (x == null) null else x:java.lang.String).asJava)
     this
   }
 

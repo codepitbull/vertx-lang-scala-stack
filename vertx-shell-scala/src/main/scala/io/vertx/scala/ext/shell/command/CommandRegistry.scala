@@ -54,7 +54,7 @@ class CommandRegistry(private val _asJava: io.vertx.ext.shell.command.CommandReg
     * Like [[io.vertx.scala.ext.shell.command.CommandRegistry#registerCommands]], without a completion handler.
     */
   def registerCommands(commands: scala.collection.mutable.Buffer[io.vertx.scala.ext.shell.command.Command]): io.vertx.scala.ext.shell.command.CommandRegistry = {
-    _asJava.registerCommands(commands.map(x => if(x == null) null else x.asJava).asJava)
+    _asJava.registerCommands(commands.map(x => if (x == null) null else x.asJava).asJava)
     this
   }
 
@@ -65,7 +65,7 @@ class CommandRegistry(private val _asJava: io.vertx.ext.shell.command.CommandReg
     */
   def registerCommandsFuture(commands: scala.collection.mutable.Buffer[io.vertx.scala.ext.shell.command.Command]): concurrent.Future[scala.collection.mutable.Buffer[io.vertx.scala.ext.shell.command.Command]] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.util.List[io.vertx.ext.shell.command.Command],scala.collection.mutable.Buffer[io.vertx.scala.ext.shell.command.Command]]((x => if (x == null) null else x.asScala.map(Command.apply)))
-    _asJava.registerCommands(commands.map(x => if(x == null) null else x.asJava).asJava, promiseAndHandler._1)
+    _asJava.registerCommands(commands.map(x => if (x == null) null else x.asJava).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 

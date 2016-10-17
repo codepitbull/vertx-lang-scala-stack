@@ -24,6 +24,7 @@ import io.vertx.core.json.JsonObject
 import io.vertx.servicediscovery.Record
 import io.vertx.scala.servicediscovery.ServiceDiscovery
 import io.vertx.core.Handler
+import java.util.function.Function
 import io.vertx.scala.core.http.HttpClient
 
 /**
@@ -60,6 +61,12 @@ object HttpEndpoint {
   def getClientFuture(discovery: io.vertx.scala.servicediscovery.ServiceDiscovery, filter: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.scala.core.http.HttpClient] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.http.HttpClient,io.vertx.scala.core.http.HttpClient]((x => if (x == null) null else HttpClient.apply(x)))
     io.vertx.servicediscovery.types.HttpEndpoint.getClient(discovery.asJava.asInstanceOf[io.vertx.servicediscovery.ServiceDiscovery], filter, promiseAndHandler._1)
+    promiseAndHandler._2.future
+  }
+
+  def getClientFuture(discovery: io.vertx.scala.servicediscovery.ServiceDiscovery, filter: io.vertx.servicediscovery.Record => java.lang.Boolean): concurrent.Future[io.vertx.scala.core.http.HttpClient] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.http.HttpClient,io.vertx.scala.core.http.HttpClient]((x => if (x == null) null else HttpClient.apply(x)))
+    io.vertx.servicediscovery.types.HttpEndpoint.getClient(discovery.asJava.asInstanceOf[io.vertx.servicediscovery.ServiceDiscovery], asJavaFunction(filter), promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 

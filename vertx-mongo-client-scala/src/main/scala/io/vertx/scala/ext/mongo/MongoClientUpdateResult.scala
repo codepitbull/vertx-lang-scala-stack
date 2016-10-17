@@ -41,12 +41,15 @@ class MongoClientUpdateResult(val asJava: io.vertx.ext.mongo.MongoClientUpdateRe
 object MongoClientUpdateResult {
   type MongoClientUpdateResultJava = io.vertx.ext.mongo.MongoClientUpdateResult
   
+  def apply() = {
+    new MongoClientUpdateResult(new MongoClientUpdateResultJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: MongoClientUpdateResultJava) = {
     if(t != null)
       new MongoClientUpdateResult(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):MongoClientUpdateResult = {

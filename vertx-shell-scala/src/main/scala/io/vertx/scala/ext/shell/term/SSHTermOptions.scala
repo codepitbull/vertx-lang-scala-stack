@@ -100,12 +100,15 @@ class SSHTermOptions(val asJava: io.vertx.ext.shell.term.SSHTermOptions) {
 object SSHTermOptions {
   type SSHTermOptionsJava = io.vertx.ext.shell.term.SSHTermOptions
   
+  def apply() = {
+    new SSHTermOptions(new SSHTermOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: SSHTermOptionsJava) = {
     if(t != null)
       new SSHTermOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):SSHTermOptions = {

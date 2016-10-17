@@ -146,12 +146,15 @@ class RedisOptions(val asJava: io.vertx.redis.RedisOptions) {
 object RedisOptions {
   type RedisOptionsJava = io.vertx.redis.RedisOptions
   
+  def apply() = {
+    new RedisOptions(new RedisOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: RedisOptionsJava) = {
     if(t != null)
       new RedisOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):RedisOptions = {

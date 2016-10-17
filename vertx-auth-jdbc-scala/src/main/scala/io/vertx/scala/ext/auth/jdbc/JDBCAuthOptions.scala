@@ -106,12 +106,15 @@ class JDBCAuthOptions(val asJava: io.vertx.ext.auth.jdbc.JDBCAuthOptions) {
 object JDBCAuthOptions {
   type JDBCAuthOptionsJava = io.vertx.ext.auth.jdbc.JDBCAuthOptions
   
+  def apply() = {
+    new JDBCAuthOptions(new JDBCAuthOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: JDBCAuthOptionsJava) = {
     if(t != null)
       new JDBCAuthOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):JDBCAuthOptions = {

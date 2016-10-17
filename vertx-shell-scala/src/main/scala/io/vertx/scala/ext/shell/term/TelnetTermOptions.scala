@@ -254,12 +254,15 @@ class TelnetTermOptions(val asJava: io.vertx.ext.shell.term.TelnetTermOptions) {
 object TelnetTermOptions {
   type TelnetTermOptionsJava = io.vertx.ext.shell.term.TelnetTermOptions
   
+  def apply() = {
+    new TelnetTermOptions(new TelnetTermOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: TelnetTermOptionsJava) = {
     if(t != null)
       new TelnetTermOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):TelnetTermOptions = {

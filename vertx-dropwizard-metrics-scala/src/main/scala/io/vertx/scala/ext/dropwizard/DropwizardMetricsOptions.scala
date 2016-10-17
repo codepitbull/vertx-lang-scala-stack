@@ -125,12 +125,15 @@ class DropwizardMetricsOptions(val asJava: io.vertx.ext.dropwizard.DropwizardMet
 object DropwizardMetricsOptions {
   type DropwizardMetricsOptionsJava = io.vertx.ext.dropwizard.DropwizardMetricsOptions
   
+  def apply() = {
+    new DropwizardMetricsOptions(new DropwizardMetricsOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: DropwizardMetricsOptionsJava) = {
     if(t != null)
       new DropwizardMetricsOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):DropwizardMetricsOptions = {

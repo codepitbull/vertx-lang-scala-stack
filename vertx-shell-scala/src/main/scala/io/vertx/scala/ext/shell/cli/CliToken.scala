@@ -35,7 +35,7 @@ class CliToken(private val _asJava: io.vertx.ext.shell.cli.CliToken) {
   }
 
   /**
-    * @return the raw token value, that may contain unescaped chars, for instance {@literal "ab\"cd"`
+    * @return the raw token value, that may contain unescaped chars, for instance ` "ab\"cd"`
     */
   def raw(): String = {
     _asJava.raw()

@@ -57,7 +57,7 @@ class SQLConnection(private val _asJava: io.vertx.ext.sql.SQLConnection) {
   /**
     * Executes the given SQL <code>SELECT</code> statement which returns the results of the query.
     * @param sql the SQL to execute. For example <code>SELECT * FROM table ...</code>.
-    * @return the future which is called once the operation completes. It will return a {@code ResultSet}.
+    * @return the future which is called once the operation completes. It will return a `ResultSet`.
     */
   def queryFuture(sql: String): concurrent.Future[io.vertx.scala.ext.sql.ResultSet] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.sql.ResultSet,io.vertx.scala.ext.sql.ResultSet]((x => io.vertx.scala.ext.sql.ResultSet(x)))
@@ -69,7 +69,7 @@ class SQLConnection(private val _asJava: io.vertx.ext.sql.SQLConnection) {
     * Executes the given SQL <code>SELECT</code> prepared statement which returns the results of the query.
     * @param sql the SQL to execute. For example <code>SELECT * FROM table ...</code>.
     * @param params these are the parameters to fill the statement.
-    * @return the future which is called once the operation completes. It will return a {@code ResultSet}.
+    * @return the future which is called once the operation completes. It will return a `ResultSet`.
     */
   def queryWithParamsFuture(sql: String, params: io.vertx.core.json.JsonArray): concurrent.Future[io.vertx.scala.ext.sql.ResultSet] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.sql.ResultSet,io.vertx.scala.ext.sql.ResultSet]((x => io.vertx.scala.ext.sql.ResultSet(x)))
@@ -105,7 +105,7 @@ class SQLConnection(private val _asJava: io.vertx.ext.sql.SQLConnection) {
   /**
     * Calls the given SQL <code>PROCEDURE</code> which returns the result from the procedure.
     * @param sql the SQL to execute. For example <code>{call getEmpName (?, ?)`</code>.
-    * @return the future which is called once the operation completes. It will return a {@code ResultSet}.
+    * @return the future which is called once the operation completes. It will return a `ResultSet`.
     */
   def callFuture(sql: String): concurrent.Future[io.vertx.scala.ext.sql.ResultSet] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.sql.ResultSet,io.vertx.scala.ext.sql.ResultSet]((x => io.vertx.scala.ext.sql.ResultSet(x)))
@@ -126,7 +126,7 @@ class SQLConnection(private val _asJava: io.vertx.ext.sql.SQLConnection) {
     * @param sql the SQL to execute. For example <code>{call getEmpName (?, ?)`</code>.
     * @param params these are the parameters to fill the statement.
     * @param outputs these are the outputs to fill the statement.
-    * @return the future which is called once the operation completes. It will return a {@code ResultSet}.
+    * @return the future which is called once the operation completes. It will return a `ResultSet`.
     */
   def callWithParamsFuture(sql: String, params: io.vertx.core.json.JsonArray, outputs: io.vertx.core.json.JsonArray): concurrent.Future[io.vertx.scala.ext.sql.ResultSet] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.ext.sql.ResultSet,io.vertx.scala.ext.sql.ResultSet]((x => io.vertx.scala.ext.sql.ResultSet(x)))
@@ -189,7 +189,7 @@ class SQLConnection(private val _asJava: io.vertx.ext.sql.SQLConnection) {
     */
   def batchFuture(sqlStatements: scala.collection.mutable.Buffer[String]): concurrent.Future[scala.collection.mutable.Buffer[Int]] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.util.List[java.lang.Integer],scala.collection.mutable.Buffer[Int]]((x => if (x == null) null else x.asScala.map(x => x:Int)))
-    _asJava.batch(sqlStatements.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.batch(sqlStatements.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -202,7 +202,7 @@ class SQLConnection(private val _asJava: io.vertx.ext.sql.SQLConnection) {
     */
   def batchWithParamsFuture(sqlStatement: String, args: scala.collection.mutable.Buffer[io.vertx.core.json.JsonArray]): concurrent.Future[scala.collection.mutable.Buffer[Int]] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.util.List[java.lang.Integer],scala.collection.mutable.Buffer[Int]]((x => if (x == null) null else x.asScala.map(x => x:Int)))
-    _asJava.batchWithParams(sqlStatement, args.map(x => if(x == null) null else x:io.vertx.core.json.JsonArray).asJava, promiseAndHandler._1)
+    _asJava.batchWithParams(sqlStatement, args.map(x => if (x == null) null else x:io.vertx.core.json.JsonArray).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -217,7 +217,7 @@ class SQLConnection(private val _asJava: io.vertx.ext.sql.SQLConnection) {
     */
   def batchCallableWithParamsFuture(sqlStatement: String, inArgs: scala.collection.mutable.Buffer[io.vertx.core.json.JsonArray], outArgs: scala.collection.mutable.Buffer[io.vertx.core.json.JsonArray]): concurrent.Future[scala.collection.mutable.Buffer[Int]] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.util.List[java.lang.Integer],scala.collection.mutable.Buffer[Int]]((x => if (x == null) null else x.asScala.map(x => x:Int)))
-    _asJava.batchCallableWithParams(sqlStatement, inArgs.map(x => if(x == null) null else x:io.vertx.core.json.JsonArray).asJava, outArgs.map(x => if(x == null) null else x:io.vertx.core.json.JsonArray).asJava, promiseAndHandler._1)
+    _asJava.batchCallableWithParams(sqlStatement, inArgs.map(x => if (x == null) null else x:io.vertx.core.json.JsonArray).asJava, outArgs.map(x => if (x == null) null else x:io.vertx.core.json.JsonArray).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 

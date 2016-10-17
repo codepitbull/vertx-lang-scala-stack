@@ -234,12 +234,15 @@ class MailConfig(val asJava: io.vertx.ext.mail.MailConfig) {
 object MailConfig {
   type MailConfigJava = io.vertx.ext.mail.MailConfig
   
+  def apply() = {
+    new MailConfig(new MailConfigJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: MailConfigJava) = {
     if(t != null)
       new MailConfig(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):MailConfig = {

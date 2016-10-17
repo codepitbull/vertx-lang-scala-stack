@@ -99,12 +99,15 @@ class Frame(val asJava: io.vertx.ext.stomp.Frame) {
 object Frame {
   type FrameJava = io.vertx.ext.stomp.Frame
   
+  def apply() = {
+    new Frame(new FrameJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: FrameJava) = {
     if(t != null)
       new Frame(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):Frame = {

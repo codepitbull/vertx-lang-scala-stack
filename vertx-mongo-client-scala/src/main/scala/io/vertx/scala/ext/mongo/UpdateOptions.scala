@@ -37,6 +37,17 @@ class UpdateOptions(val asJava: io.vertx.ext.mongo.UpdateOptions) {
   }
 
   /**
+    * Set whether new document property is enabled. Valid only on findOneAnd* methods.
+    */
+  def setReturningNewDocument(value:Boolean) = {
+    asJava.setReturningNewDocument(value)
+    this
+  }
+  def isReturningNewDocument = {
+    asJava.isReturningNewDocument()
+  }
+
+  /**
     * Set whether upsert is enabled
     */
   def setUpsert(value:Boolean) = {
@@ -62,12 +73,15 @@ class UpdateOptions(val asJava: io.vertx.ext.mongo.UpdateOptions) {
 object UpdateOptions {
   type UpdateOptionsJava = io.vertx.ext.mongo.UpdateOptions
   
+  def apply() = {
+    new UpdateOptions(new UpdateOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: UpdateOptionsJava) = {
     if(t != null)
       new UpdateOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):UpdateOptions = {

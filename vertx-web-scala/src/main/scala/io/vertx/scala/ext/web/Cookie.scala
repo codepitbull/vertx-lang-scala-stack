@@ -61,7 +61,7 @@ class Cookie(private val _asJava: io.vertx.ext.web.Cookie) {
     * @return a reference to this, so the API can be used fluently
     */
   def setDomain(domain: scala.Option[String]): io.vertx.scala.ext.web.Cookie = {
-    _asJava.setDomain((if(domain.isDefined) domain.get else null))
+    _asJava.setDomain((if (domain.isDefined) domain.get else null))
     this
   }
 
@@ -78,7 +78,7 @@ class Cookie(private val _asJava: io.vertx.ext.web.Cookie) {
     * @return a reference to this, so the API can be used fluently
     */
   def setPath(path: scala.Option[String]): io.vertx.scala.ext.web.Cookie = {
-    _asJava.setPath((if(path.isDefined) path.get else null))
+    _asJava.setPath((if (path.isDefined) path.get else null))
     this
   }
 

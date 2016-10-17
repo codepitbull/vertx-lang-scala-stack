@@ -59,7 +59,7 @@ class Process(private val _asJava: io.vertx.ext.shell.system.Process) {
     * @return the process tty
     */
   def getTty(): io.vertx.scala.ext.shell.term.Tty = {
-    if(cached_0 == null) {
+    if (cached_0 == null) {
       cached_0=    Tty.apply(_asJava.getTty())
     }
     cached_0
@@ -79,7 +79,7 @@ class Process(private val _asJava: io.vertx.ext.shell.system.Process) {
     * @return the process session
     */
   def getSession(): io.vertx.scala.ext.shell.session.Session = {
-    if(cached_1 == null) {
+    if (cached_1 == null) {
       cached_1=    Session.apply(_asJava.getSession())
     }
     cached_1

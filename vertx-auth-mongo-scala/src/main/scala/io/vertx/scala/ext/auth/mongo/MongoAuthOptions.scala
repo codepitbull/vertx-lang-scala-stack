@@ -150,12 +150,15 @@ class MongoAuthOptions(val asJava: io.vertx.ext.auth.mongo.MongoAuthOptions) {
 object MongoAuthOptions {
   type MongoAuthOptionsJava = io.vertx.ext.auth.mongo.MongoAuthOptions
   
+  def apply() = {
+    new MongoAuthOptions(new MongoAuthOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: MongoAuthOptionsJava) = {
     if(t != null)
       new MongoAuthOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):MongoAuthOptions = {

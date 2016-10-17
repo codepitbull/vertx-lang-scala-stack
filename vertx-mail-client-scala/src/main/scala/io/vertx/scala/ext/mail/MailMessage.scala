@@ -158,12 +158,15 @@ class MailMessage(val asJava: io.vertx.ext.mail.MailMessage) {
 object MailMessage {
   type MailMessageJava = io.vertx.ext.mail.MailMessage
   
+  def apply() = {
+    new MailMessage(new MailMessageJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: MailMessageJava) = {
     if(t != null)
       new MailMessage(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):MailMessage = {

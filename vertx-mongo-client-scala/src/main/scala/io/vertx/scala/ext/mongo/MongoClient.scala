@@ -277,6 +277,99 @@ class MongoClient(private val _asJava: io.vertx.ext.mongo.MongoClient) {
   }
 
   /**
+    * Find a single matching document in the specified collection and update it.
+    * 
+    * This operation might change <i>_id</i> field of <i>query</i> parameter
+    * @param collection the collection
+    * @param query the query used to match the document
+    * @param update used to describe how the documents will be updated
+    * @return will be provided with the document, if any
+    */
+  def findOneAndUpdateFuture(collection: String, query: io.vertx.core.json.JsonObject, update: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.findOneAndUpdate(collection, query, update, promiseAndHandler._1)
+    promiseAndHandler._2.future
+  }
+
+  /**
+    * Find a single matching document in the specified collection and update it.
+    * 
+    * This operation might change <i>_id</i> field of <i>query</i> parameter
+    * @param collection the collection
+    * @param query the query used to match the document
+    * @param update used to describe how the documents will be updated
+    * @param findOptions options to configure the findsee <a href="../../../../../../../cheatsheet/FindOptions.html">FindOptions</a>
+    * @param updateOptions options to configure the updatesee <a href="../../../../../../../cheatsheet/UpdateOptions.html">UpdateOptions</a>
+    * @return will be provided with the document, if any
+    */
+  def findOneAndUpdateWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, update: io.vertx.core.json.JsonObject, findOptions: io.vertx.scala.ext.mongo.FindOptions, updateOptions: io.vertx.scala.ext.mongo.UpdateOptions): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.findOneAndUpdateWithOptions(collection, query, update, findOptions.asJava, updateOptions.asJava, promiseAndHandler._1)
+    promiseAndHandler._2.future
+  }
+
+  /**
+    * Find a single matching document in the specified collection and replace it.
+    * 
+    * This operation might change <i>_id</i> field of <i>query</i> parameter
+    * @param collection the collection
+    * @param query the query used to match the document
+    * @param replace the replacement document
+    * @return will be provided with the document, if any
+    */
+  def findOneAndReplaceFuture(collection: String, query: io.vertx.core.json.JsonObject, replace: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.findOneAndReplace(collection, query, replace, promiseAndHandler._1)
+    promiseAndHandler._2.future
+  }
+
+  /**
+    * Find a single matching document in the specified collection and replace it.
+    * 
+    * This operation might change <i>_id</i> field of <i>query</i> parameter
+    * @param collection the collection
+    * @param query the query used to match the document
+    * @param replace the replacement document
+    * @param findOptions options to configure the findsee <a href="../../../../../../../cheatsheet/FindOptions.html">FindOptions</a>
+    * @param updateOptions options to configure the updatesee <a href="../../../../../../../cheatsheet/UpdateOptions.html">UpdateOptions</a>
+    * @return will be provided with the document, if any
+    */
+  def findOneAndReplaceWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, replace: io.vertx.core.json.JsonObject, findOptions: io.vertx.scala.ext.mongo.FindOptions, updateOptions: io.vertx.scala.ext.mongo.UpdateOptions): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.findOneAndReplaceWithOptions(collection, query, replace, findOptions.asJava, updateOptions.asJava, promiseAndHandler._1)
+    promiseAndHandler._2.future
+  }
+
+  /**
+    * Find a single matching document in the specified collection and delete it.
+    * 
+    * This operation might change <i>_id</i> field of <i>query</i> parameter
+    * @param collection the collection
+    * @param query the query used to match the document
+    * @return will be provided with the deleted document, if any
+    */
+  def findOneAndDeleteFuture(collection: String, query: io.vertx.core.json.JsonObject): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.findOneAndDelete(collection, query, promiseAndHandler._1)
+    promiseAndHandler._2.future
+  }
+
+  /**
+    * Find a single matching document in the specified collection and delete it.
+    * 
+    * This operation might change <i>_id</i> field of <i>query</i> parameter
+    * @param collection the collection
+    * @param query the query used to match the document
+    * @param findOptions options to configure the findsee <a href="../../../../../../../cheatsheet/FindOptions.html">FindOptions</a>
+    * @return will be provided with the deleted document, if any
+    */
+  def findOneAndDeleteWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, findOptions: io.vertx.scala.ext.mongo.FindOptions): concurrent.Future[io.vertx.core.json.JsonObject] = {
+    val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonObject,io.vertx.core.json.JsonObject]((x => x))
+    _asJava.findOneAndDeleteWithOptions(collection, query, findOptions.asJava, promiseAndHandler._1)
+    promiseAndHandler._2.future
+  }
+
+  /**
     * Count matching documents in a collection.
     * @param collection the collection
     * @param query query used to match documents

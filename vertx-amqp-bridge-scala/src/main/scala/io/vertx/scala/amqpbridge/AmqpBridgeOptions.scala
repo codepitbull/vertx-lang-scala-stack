@@ -101,6 +101,13 @@ class AmqpBridgeOptions(val asJava: io.vertx.amqpbridge.AmqpBridgeOptions) {
     asJava.setKeyStoreOptions(value.asJava)
     this
   }
+  def setLocalAddress(value:String) = {
+    asJava.setLocalAddress(value)
+    this
+  }
+  def getLocalAddress = {
+    asJava.getLocalAddress()
+  }
   def setLogActivity(value:Boolean) = {
     asJava.setLogActivity(value)
     this
@@ -267,12 +274,15 @@ class AmqpBridgeOptions(val asJava: io.vertx.amqpbridge.AmqpBridgeOptions) {
 object AmqpBridgeOptions {
   type AmqpBridgeOptionsJava = io.vertx.amqpbridge.AmqpBridgeOptions
   
+  def apply() = {
+    new AmqpBridgeOptions(new AmqpBridgeOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: AmqpBridgeOptionsJava) = {
     if(t != null)
       new AmqpBridgeOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):AmqpBridgeOptions = {

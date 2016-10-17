@@ -49,12 +49,15 @@ class MailResult(val asJava: io.vertx.ext.mail.MailResult) {
 object MailResult {
   type MailResultJava = io.vertx.ext.mail.MailResult
   
+  def apply() = {
+    new MailResult(new MailResultJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: MailResultJava) = {
     if(t != null)
       new MailResult(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):MailResult = {

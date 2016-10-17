@@ -37,7 +37,7 @@ class ServiceReference(private val _asJava: io.vertx.servicediscovery.ServiceRef
     * @return the service record.see <a href="../../../../../../cheatsheet/Record.html">Record</a>
     */
   def record(): io.vertx.scala.servicediscovery.Record = {
-    if(cached_0 == null) {
+    if (cached_0 == null) {
       cached_0=    io.vertx.scala.servicediscovery.Record(_asJava.record())
     }
     cached_0

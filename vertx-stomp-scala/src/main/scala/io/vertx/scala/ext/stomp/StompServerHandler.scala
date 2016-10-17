@@ -228,7 +228,7 @@ class StompServerHandler(private val _asJava: io.vertx.ext.stomp.StompServerHand
     * @return the current [[StompServerHandler]]
     */
   def onAck(connection: io.vertx.scala.ext.stomp.StompServerConnection, subscribe: io.vertx.scala.ext.stomp.Frame, messages: scala.collection.mutable.Buffer[io.vertx.scala.ext.stomp.Frame]): io.vertx.scala.ext.stomp.StompServerHandler = {
-    _asJava.onAck(connection.asJava.asInstanceOf[io.vertx.ext.stomp.StompServerConnection], subscribe.asJava, messages.map(x => if(x == null) null else x.asJava).asJava)
+    _asJava.onAck(connection.asJava.asInstanceOf[io.vertx.ext.stomp.StompServerConnection], subscribe.asJava, messages.map(x => if (x == null) null else x.asJava).asJava)
     this
   }
 
@@ -243,7 +243,7 @@ class StompServerHandler(private val _asJava: io.vertx.ext.stomp.StompServerHand
     * @return the current [[StompServerHandler]]
     */
   def onNack(connection: io.vertx.scala.ext.stomp.StompServerConnection, subscribe: io.vertx.scala.ext.stomp.Frame, messages: scala.collection.mutable.Buffer[io.vertx.scala.ext.stomp.Frame]): io.vertx.scala.ext.stomp.StompServerHandler = {
-    _asJava.onNack(connection.asJava.asInstanceOf[io.vertx.ext.stomp.StompServerConnection], subscribe.asJava, messages.map(x => if(x == null) null else x.asJava).asJava)
+    _asJava.onNack(connection.asJava.asInstanceOf[io.vertx.ext.stomp.StompServerConnection], subscribe.asJava, messages.map(x => if (x == null) null else x.asJava).asJava)
     this
   }
 

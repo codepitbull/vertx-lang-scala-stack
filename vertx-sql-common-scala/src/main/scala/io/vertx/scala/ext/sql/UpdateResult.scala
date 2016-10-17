@@ -54,12 +54,15 @@ class UpdateResult(val asJava: io.vertx.ext.sql.UpdateResult) {
 object UpdateResult {
   type UpdateResultJava = io.vertx.ext.sql.UpdateResult
   
+  def apply() = {
+    new UpdateResult(new UpdateResultJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: UpdateResultJava) = {
     if(t != null)
       new UpdateResult(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):UpdateResult = {

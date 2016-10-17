@@ -44,12 +44,15 @@ class SetOptions(val asJava: io.vertx.redis.op.SetOptions) {
 object SetOptions {
   type SetOptionsJava = io.vertx.redis.op.SetOptions
   
+  def apply() = {
+    new SetOptions(new SetOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: SetOptionsJava) = {
     if(t != null)
       new SetOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):SetOptions = {

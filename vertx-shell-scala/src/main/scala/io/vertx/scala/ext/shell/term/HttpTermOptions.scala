@@ -358,12 +358,15 @@ class HttpTermOptions(val asJava: io.vertx.ext.shell.term.HttpTermOptions) {
 object HttpTermOptions {
   type HttpTermOptionsJava = io.vertx.ext.shell.term.HttpTermOptions
   
+  def apply() = {
+    new HttpTermOptions(new HttpTermOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: HttpTermOptionsJava) = {
     if(t != null)
       new HttpTermOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):HttpTermOptions = {

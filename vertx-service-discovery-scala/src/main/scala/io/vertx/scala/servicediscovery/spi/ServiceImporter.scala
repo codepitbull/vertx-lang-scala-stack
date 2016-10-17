@@ -45,17 +45,7 @@ class ServiceImporter(private val _asJava: io.vertx.servicediscovery.spi.Service
   }
 
   /**
-    * Stops the importer.
-    * @param vertx the vertx instance
-    * @param publisher the service discovery instance
-    * @param future the future on which the bridge must report the completion of the stopping process
-    */
-  def stop(vertx: io.vertx.scala.core.Vertx, publisher: io.vertx.scala.servicediscovery.spi.ServicePublisher, future: io.vertx.scala.core.Future[Unit]): Unit = {
-    _asJava.stop(vertx.asJava.asInstanceOf[io.vertx.core.Vertx], publisher.asJava.asInstanceOf[io.vertx.servicediscovery.spi.ServicePublisher], future.asJava.asInstanceOf[io.vertx.core.Future[java.lang.Void]])
-  }
-
-  /**
-    * Close the importer
+    * Closes the importer
     * @param closeHandler the handle to be notified when importer is closed, may be `null`
     */
   def close(closeHandler: () => Unit): Unit = {

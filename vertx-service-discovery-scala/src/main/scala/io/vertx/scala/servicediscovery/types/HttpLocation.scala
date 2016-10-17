@@ -86,12 +86,15 @@ class HttpLocation(val asJava: io.vertx.servicediscovery.types.HttpLocation) {
 object HttpLocation {
   type HttpLocationJava = io.vertx.servicediscovery.types.HttpLocation
   
+  def apply() = {
+    new HttpLocation(new HttpLocationJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: HttpLocationJava) = {
     if(t != null)
       new HttpLocation(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):HttpLocation = {

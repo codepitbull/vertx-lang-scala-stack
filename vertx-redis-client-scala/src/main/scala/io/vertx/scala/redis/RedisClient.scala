@@ -131,7 +131,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def bitopFuture(operation: io.vertx.redis.op.BitOperation, destkey: String, keys: scala.collection.mutable.Buffer[String]): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
-    _asJava.bitop(operation, destkey, keys.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.bitop(operation, destkey, keys.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -199,7 +199,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def blpopManyFuture(keys: scala.collection.mutable.Buffer[String], seconds: Int): concurrent.Future[io.vertx.core.json.JsonArray] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
-    _asJava.blpopMany(keys.map(x => if(x == null) null else x:java.lang.String).asJava, seconds, promiseAndHandler._1)
+    _asJava.blpopMany(keys.map(x => if (x == null) null else x:java.lang.String).asJava, seconds, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -223,7 +223,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def brpopManyFuture(keys: scala.collection.mutable.Buffer[String], seconds: Int): concurrent.Future[io.vertx.core.json.JsonArray] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
-    _asJava.brpopMany(keys.map(x => if(x == null) null else x:java.lang.String).asJava, seconds, promiseAndHandler._1)
+    _asJava.brpopMany(keys.map(x => if (x == null) null else x:java.lang.String).asJava, seconds, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -297,7 +297,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def clusterAddslotsFuture(slots: scala.collection.mutable.Buffer[Long]): concurrent.Future[Unit] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
-    _asJava.clusterAddslots(slots.map(x => if(x == null) null else x:java.lang.Long).asJava, promiseAndHandler._1)
+    _asJava.clusterAddslots(slots.map(x => if (x == null) null else x:java.lang.Long).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -337,7 +337,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def clusterDelslotsManyFuture(slots: scala.collection.mutable.Buffer[Long]): concurrent.Future[Unit] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
-    _asJava.clusterDelslotsMany(slots.map(x => if(x == null) null else x:java.lang.Long).asJava, promiseAndHandler._1)
+    _asJava.clusterDelslotsMany(slots.map(x => if (x == null) null else x:java.lang.Long).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -544,7 +544,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def commandInfoFuture(commands: scala.collection.mutable.Buffer[String]): concurrent.Future[io.vertx.core.json.JsonArray] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
-    _asJava.commandInfo(commands.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.commandInfo(commands.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -659,7 +659,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def delManyFuture(keys: scala.collection.mutable.Buffer[String]): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
-    _asJava.delMany(keys.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.delMany(keys.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -698,7 +698,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def evalFuture(script: String, keys: scala.collection.mutable.Buffer[String], args: scala.collection.mutable.Buffer[String]): concurrent.Future[io.vertx.core.json.JsonArray] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
-    _asJava.eval(script, keys.map(x => if(x == null) null else x:java.lang.String).asJava, args.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.eval(script, keys.map(x => if (x == null) null else x:java.lang.String).asJava, args.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -715,7 +715,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def evalshaFuture(sha1: String, keys: scala.collection.mutable.Buffer[String], values: scala.collection.mutable.Buffer[String]): concurrent.Future[io.vertx.core.json.JsonArray] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
-    _asJava.evalsha(sha1, keys.map(x => if(x == null) null else x:java.lang.String).asJava, values.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.evalsha(sha1, keys.map(x => if (x == null) null else x:java.lang.String).asJava, values.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -851,7 +851,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def hdelManyFuture(key: String, fields: scala.collection.mutable.Buffer[String]): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
-    _asJava.hdelMany(key, fields.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.hdelMany(key, fields.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -946,7 +946,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def hmgetFuture(key: String, fields: scala.collection.mutable.Buffer[String]): concurrent.Future[io.vertx.core.json.JsonArray] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
-    _asJava.hmget(key, fields.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.hmget(key, fields.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -1131,7 +1131,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def lpushManyFuture(key: String, values: scala.collection.mutable.Buffer[String]): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
-    _asJava.lpushMany(key, values.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.lpushMany(key, values.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -1229,7 +1229,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def mgetManyFuture(keys: scala.collection.mutable.Buffer[String]): concurrent.Future[io.vertx.core.json.JsonArray] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
-    _asJava.mgetMany(keys.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.mgetMany(keys.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -1358,7 +1358,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def pfaddManyFuture(key: String, elements: scala.collection.mutable.Buffer[String]): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
-    _asJava.pfaddMany(key, elements.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.pfaddMany(key, elements.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -1380,7 +1380,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def pfcountManyFuture(keys: scala.collection.mutable.Buffer[String]): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
-    _asJava.pfcountMany(keys.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.pfcountMany(keys.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -1392,7 +1392,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def pfmergeFuture(destkey: String, keys: scala.collection.mutable.Buffer[String]): concurrent.Future[String] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.String,String]((x => x))
-    _asJava.pfmerge(destkey, keys.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.pfmerge(destkey, keys.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -1436,7 +1436,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def psubscribeManyFuture(patterns: scala.collection.mutable.Buffer[String]): concurrent.Future[io.vertx.core.json.JsonArray] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
-    _asJava.psubscribeMany(patterns.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.psubscribeMany(patterns.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -1458,7 +1458,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def pubsubNumsubFuture(channels: scala.collection.mutable.Buffer[String]): concurrent.Future[io.vertx.core.json.JsonArray] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
-    _asJava.pubsubNumsub(channels.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.pubsubNumsub(channels.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -1502,7 +1502,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def punsubscribeFuture(patterns: scala.collection.mutable.Buffer[String]): concurrent.Future[Unit] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
-    _asJava.punsubscribe(patterns.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.punsubscribe(patterns.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -1592,7 +1592,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def rpushManyFuture(key: String, values: scala.collection.mutable.Buffer[String]): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
-    _asJava.rpushMany(key, values.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.rpushMany(key, values.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -1640,7 +1640,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def saddManyFuture(key: String, members: scala.collection.mutable.Buffer[String]): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
-    _asJava.saddMany(key, members.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.saddMany(key, members.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -1682,7 +1682,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def scriptExistsManyFuture(scripts: scala.collection.mutable.Buffer[String]): concurrent.Future[io.vertx.core.json.JsonArray] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
-    _asJava.scriptExistsMany(scripts.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.scriptExistsMany(scripts.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -1723,7 +1723,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def sdiffFuture(key: String, cmpkeys: scala.collection.mutable.Buffer[String]): concurrent.Future[io.vertx.core.json.JsonArray] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
-    _asJava.sdiff(key, cmpkeys.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.sdiff(key, cmpkeys.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -1736,7 +1736,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def sdiffstoreFuture(destkey: String, key: String, cmpkeys: scala.collection.mutable.Buffer[String]): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
-    _asJava.sdiffstore(destkey, key, cmpkeys.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.sdiffstore(destkey, key, cmpkeys.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -1859,7 +1859,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def sinterFuture(keys: scala.collection.mutable.Buffer[String]): concurrent.Future[io.vertx.core.json.JsonArray] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
-    _asJava.sinter(keys.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.sinter(keys.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -1871,7 +1871,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def sinterstoreFuture(destkey: String, keys: scala.collection.mutable.Buffer[String]): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
-    _asJava.sinterstore(destkey, keys.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.sinterstore(destkey, keys.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -2042,7 +2042,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def sremManyFuture(key: String, members: scala.collection.mutable.Buffer[String]): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
-    _asJava.sremMany(key, members.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.sremMany(key, members.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -2075,7 +2075,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def subscribeManyFuture(channels: scala.collection.mutable.Buffer[String]): concurrent.Future[io.vertx.core.json.JsonArray] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
-    _asJava.subscribeMany(channels.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.subscribeMany(channels.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -2086,7 +2086,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def sunionFuture(keys: scala.collection.mutable.Buffer[String]): concurrent.Future[io.vertx.core.json.JsonArray] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
-    _asJava.sunion(keys.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.sunion(keys.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -2098,7 +2098,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def sunionstoreFuture(destkey: String, keys: scala.collection.mutable.Buffer[String]): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
-    _asJava.sunionstore(destkey, keys.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.sunionstore(destkey, keys.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -2157,7 +2157,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def unsubscribeFuture(channels: scala.collection.mutable.Buffer[String]): concurrent.Future[Unit] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Void,Unit]((x => ()))
-    _asJava.unsubscribe(channels.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.unsubscribe(channels.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -2242,7 +2242,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def zinterstoreFuture(destkey: String, sets: scala.collection.mutable.Buffer[String], options: io.vertx.redis.op.AggregateOptions): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
-    _asJava.zinterstore(destkey, sets.map(x => if(x == null) null else x:java.lang.String).asJava, options, promiseAndHandler._1)
+    _asJava.zinterstore(destkey, sets.map(x => if (x == null) null else x:java.lang.String).asJava, options, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -2359,7 +2359,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def zremManyFuture(key: String, members: scala.collection.mutable.Buffer[String]): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
-    _asJava.zremMany(key, members.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.zremMany(key, members.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -2476,7 +2476,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def zunionstoreFuture(destkey: String, sets: scala.collection.mutable.Buffer[String], options: io.vertx.redis.op.AggregateOptions): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
-    _asJava.zunionstore(destkey, sets.map(x => if(x == null) null else x:java.lang.String).asJava, options, promiseAndHandler._1)
+    _asJava.zunionstore(destkey, sets.map(x => if (x == null) null else x:java.lang.String).asJava, options, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -2566,7 +2566,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def geoaddManyFuture(key: String, members: scala.collection.mutable.Buffer[io.vertx.scala.redis.op.GeoMember]): concurrent.Future[Long] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Long,Long]((x => x))
-    _asJava.geoaddMany(key, members.map(x => if(x == null) null else x.asJava).asJava, promiseAndHandler._1)
+    _asJava.geoaddMany(key, members.map(x => if (x == null) null else x.asJava).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -2592,7 +2592,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def geohashManyFuture(key: String, members: scala.collection.mutable.Buffer[String]): concurrent.Future[io.vertx.core.json.JsonArray] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
-    _asJava.geohashMany(key, members.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.geohashMany(key, members.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -2618,7 +2618,7 @@ WARNING: THIS METHOD NEEDS BETTER DOCUMENTATION THAT ADHERES TO OUR CONVENTIONS.
     */
   def geoposManyFuture(key: String, members: scala.collection.mutable.Buffer[String]): concurrent.Future[io.vertx.core.json.JsonArray] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[io.vertx.core.json.JsonArray,io.vertx.core.json.JsonArray]((x => x))
-    _asJava.geoposMany(key, members.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.geoposMany(key, members.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 

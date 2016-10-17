@@ -60,12 +60,15 @@ class GeoRadiusOptions(val asJava: io.vertx.redis.op.GeoRadiusOptions) {
 object GeoRadiusOptions {
   type GeoRadiusOptionsJava = io.vertx.redis.op.GeoRadiusOptions
   
+  def apply() = {
+    new GeoRadiusOptions(new GeoRadiusOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: GeoRadiusOptionsJava) = {
     if(t != null)
       new GeoRadiusOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):GeoRadiusOptions = {

@@ -188,7 +188,7 @@ class CircuitBreaker(private val _asJava: io.vertx.circuitbreaker.CircuitBreaker
     * @return the name of the circuit breaker.
     */
   def name(): String = {
-    if(cached_0 == null) {
+    if (cached_0 == null) {
       cached_0=    _asJava.name()
     }
     cached_0

@@ -141,6 +141,13 @@ class StompClientOptions(val asJava: io.vertx.ext.stomp.StompClientOptions) {
     asJava.setKeyStoreOptions(value.asJava)
     this
   }
+  def setLocalAddress(value:String) = {
+    asJava.setLocalAddress(value)
+    this
+  }
+  def getLocalAddress = {
+    asJava.getLocalAddress()
+  }
   def setLogActivity(value:Boolean) = {
     asJava.setLogActivity(value)
     this
@@ -352,12 +359,15 @@ class StompClientOptions(val asJava: io.vertx.ext.stomp.StompClientOptions) {
 object StompClientOptions {
   type StompClientOptionsJava = io.vertx.ext.stomp.StompClientOptions
   
+  def apply() = {
+    new StompClientOptions(new StompClientOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: StompClientOptionsJava) = {
     if(t != null)
       new StompClientOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):StompClientOptions = {

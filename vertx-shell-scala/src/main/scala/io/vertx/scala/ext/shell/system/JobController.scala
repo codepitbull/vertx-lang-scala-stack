@@ -45,7 +45,7 @@ class JobController(private val _asJava: io.vertx.ext.shell.system.JobController
   /**
     * Returns an active job in this session by its .
     * @param id the job id
-    * @return the job of {@literal null` when not found
+    * @return the job of ` null` when not found
     */
   def getJob(id: Int): io.vertx.scala.ext.shell.system.Job = {
     Job.apply(_asJava.getJob(id))

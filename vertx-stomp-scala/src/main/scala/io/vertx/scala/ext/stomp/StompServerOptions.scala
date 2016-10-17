@@ -372,12 +372,15 @@ class StompServerOptions(val asJava: io.vertx.ext.stomp.StompServerOptions) {
 object StompServerOptions {
   type StompServerOptionsJava = io.vertx.ext.stomp.StompServerOptions
   
+  def apply() = {
+    new StompServerOptions(new StompServerOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: StompServerOptionsJava) = {
     if(t != null)
       new StompServerOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):StompServerOptions = {

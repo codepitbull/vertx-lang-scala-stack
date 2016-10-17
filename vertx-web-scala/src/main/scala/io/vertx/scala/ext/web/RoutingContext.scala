@@ -53,7 +53,7 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
     * @return the HTTP request object
     */
   def request(): io.vertx.scala.core.http.HttpServerRequest = {
-    if(cached_0 == null) {
+    if (cached_0 == null) {
       cached_0=    HttpServerRequest.apply(_asJava.request())
     }
     cached_0
@@ -63,7 +63,7 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
     * @return the HTTP response object
     */
   def response(): io.vertx.scala.core.http.HttpServerResponse = {
-    if(cached_1 == null) {
+    if (cached_1 == null) {
       cached_1=    HttpServerResponse.apply(_asJava.response())
     }
     cached_1
@@ -286,7 +286,7 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
     * @return the throwable used when signalling failure
     */
   def failure(): scala.Option[Throwable] = {
-    if(cached_2 == null) {
+    if (cached_2 == null) {
       cached_2=        scala.Option(_asJava.failure())
     }
     cached_2
@@ -301,7 +301,7 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
     * @return the status code used when signalling failure
     */
   def statusCode(): Int = {
-    if(cached_3 == null) {
+    if (cached_3 == null) {
       cached_3=    _asJava.statusCode()
     }
     cached_3
@@ -400,7 +400,7 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
     * @param contentType the content type
     */
   def setAcceptableContentType(contentType: scala.Option[String]): Unit = {
-    _asJava.setAcceptableContentType((if(contentType.isDefined) contentType.get else null))
+    _asJava.setAcceptableContentType((if (contentType.isDefined) contentType.get else null))
   }
 
   /**
@@ -432,7 +432,7 @@ class RoutingContext(private val _asJava: io.vertx.ext.web.RoutingContext) {
     * @return the best matched locale for the request
     */
   def acceptableLocales(): scala.collection.mutable.Buffer[io.vertx.scala.ext.web.Locale] = {
-    if(cached_4 == null) {
+    if (cached_4 == null) {
       cached_4=    _asJava.acceptableLocales().asScala.map(Locale.apply)
     }
     cached_4

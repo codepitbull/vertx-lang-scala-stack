@@ -179,6 +179,13 @@ class OAuth2ClientOptions(val asJava: io.vertx.ext.auth.oauth2.OAuth2ClientOptio
     asJava.setKeyStoreOptions(value.asJava)
     this
   }
+  def setLocalAddress(value:String) = {
+    asJava.setLocalAddress(value)
+    this
+  }
+  def getLocalAddress = {
+    asJava.getLocalAddress()
+  }
   def setLogActivity(value:Boolean) = {
     asJava.setLogActivity(value)
     this
@@ -425,12 +432,15 @@ class OAuth2ClientOptions(val asJava: io.vertx.ext.auth.oauth2.OAuth2ClientOptio
 object OAuth2ClientOptions {
   type OAuth2ClientOptionsJava = io.vertx.ext.auth.oauth2.OAuth2ClientOptions
   
+  def apply() = {
+    new OAuth2ClientOptions(new OAuth2ClientOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: OAuth2ClientOptionsJava) = {
     if(t != null)
       new OAuth2ClientOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):OAuth2ClientOptions = {

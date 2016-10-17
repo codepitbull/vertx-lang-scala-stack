@@ -92,12 +92,15 @@ class ShellServiceOptions(val asJava: io.vertx.ext.shell.ShellServiceOptions) {
 object ShellServiceOptions {
   type ShellServiceOptionsJava = io.vertx.ext.shell.ShellServiceOptions
   
+  def apply() = {
+    new ShellServiceOptions(new ShellServiceOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: ShellServiceOptionsJava) = {
     if(t != null)
       new ShellServiceOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):ShellServiceOptions = {

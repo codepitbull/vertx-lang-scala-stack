@@ -50,7 +50,7 @@ class RedirectAuthHandler(private val _asJava: io.vertx.ext.web.handler.Redirect
     * @return a reference to this, so the API can be used fluently
     */
   def addAuthorities(authorities: Set[String]): io.vertx.scala.ext.web.handler.AuthHandler = {
-    _asJava.addAuthorities(authorities.map(x => if(x == null) null else x:java.lang.String).asJava)
+    _asJava.addAuthorities(authorities.map(x => if (x == null) null else x:java.lang.String).asJava)
     this
   }
 

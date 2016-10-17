@@ -73,12 +73,15 @@ class FindOptions(val asJava: io.vertx.ext.mongo.FindOptions) {
 object FindOptions {
   type FindOptionsJava = io.vertx.ext.mongo.FindOptions
   
+  def apply() = {
+    new FindOptions(new FindOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: FindOptionsJava) = {
     if(t != null)
       new FindOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):FindOptions = {

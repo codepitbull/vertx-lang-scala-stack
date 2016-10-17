@@ -62,12 +62,15 @@ class AuthenticationOptions(val asJava: io.vertx.ext.hawkular.AuthenticationOpti
 object AuthenticationOptions {
   type AuthenticationOptionsJava = io.vertx.ext.hawkular.AuthenticationOptions
   
+  def apply() = {
+    new AuthenticationOptions(new AuthenticationOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: AuthenticationOptionsJava) = {
     if(t != null)
       new AuthenticationOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):AuthenticationOptions = {

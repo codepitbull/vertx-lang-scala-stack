@@ -37,7 +37,7 @@ class Shell(private val _asJava: io.vertx.ext.shell.Shell) {
     * @return the created job
     */
   def createJob(line: scala.collection.mutable.Buffer[io.vertx.scala.ext.shell.cli.CliToken]): io.vertx.scala.ext.shell.system.Job = {
-    Job.apply(_asJava.createJob(line.map(x => if(x == null) null else x.asJava).asJava))
+    Job.apply(_asJava.createJob(line.map(x => if (x == null) null else x.asJava).asJava))
   }
 
   /**
@@ -51,7 +51,7 @@ class Shell(private val _asJava: io.vertx.ext.shell.Shell) {
     * @return the shell's job controller
     */
   def jobController(): io.vertx.scala.ext.shell.system.JobController = {
-    if(cached_0 == null) {
+    if (cached_0 == null) {
       cached_0=    JobController.apply(_asJava.jobController())
     }
     cached_0
@@ -61,7 +61,7 @@ class Shell(private val _asJava: io.vertx.ext.shell.Shell) {
     * @return the current shell session
     */
   def session(): io.vertx.scala.ext.shell.session.Session = {
-    if(cached_1 == null) {
+    if (cached_1 == null) {
       cached_1=    Session.apply(_asJava.session())
     }
     cached_1

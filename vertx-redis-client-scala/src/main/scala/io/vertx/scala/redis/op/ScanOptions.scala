@@ -36,12 +36,15 @@ class ScanOptions(val asJava: io.vertx.redis.op.ScanOptions) {
 object ScanOptions {
   type ScanOptionsJava = io.vertx.redis.op.ScanOptions
   
+  def apply() = {
+    new ScanOptions(new ScanOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: ScanOptionsJava) = {
     if(t != null)
       new ScanOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):ScanOptions = {

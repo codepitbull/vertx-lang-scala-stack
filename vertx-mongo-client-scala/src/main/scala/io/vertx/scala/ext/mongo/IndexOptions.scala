@@ -100,12 +100,15 @@ class IndexOptions(val asJava: io.vertx.ext.mongo.IndexOptions) {
 object IndexOptions {
   type IndexOptionsJava = io.vertx.ext.mongo.IndexOptions
   
+  def apply() = {
+    new IndexOptions(new IndexOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: IndexOptionsJava) = {
     if(t != null)
       new IndexOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):IndexOptions = {

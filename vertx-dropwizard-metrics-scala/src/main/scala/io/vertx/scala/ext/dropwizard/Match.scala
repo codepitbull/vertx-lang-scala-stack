@@ -51,12 +51,15 @@ class Match(val asJava: io.vertx.ext.dropwizard.Match) {
 object Match {
   type MatchJava = io.vertx.ext.dropwizard.Match
   
+  def apply() = {
+    new Match(new MatchJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: MatchJava) = {
     if(t != null)
       new Match(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):Match = {

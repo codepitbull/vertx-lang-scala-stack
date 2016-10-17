@@ -60,7 +60,7 @@ class Command(private val _asJava: io.vertx.ext.shell.command.Command) {
     * @return the process
     */
   def createProcess(args: scala.collection.mutable.Buffer[io.vertx.scala.ext.shell.cli.CliToken]): io.vertx.scala.ext.shell.system.Process = {
-    Process.apply(_asJava.createProcess(args.map(x => if(x == null) null else x.asJava).asJava))
+    Process.apply(_asJava.createProcess(args.map(x => if (x == null) null else x.asJava).asJava))
   }
 
   /**

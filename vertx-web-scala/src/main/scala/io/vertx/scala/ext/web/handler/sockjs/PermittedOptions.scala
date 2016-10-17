@@ -78,12 +78,15 @@ class PermittedOptions(val asJava: io.vertx.ext.web.handler.sockjs.PermittedOpti
 object PermittedOptions {
   type PermittedOptionsJava = io.vertx.ext.web.handler.sockjs.PermittedOptions
   
+  def apply() = {
+    new PermittedOptions(new PermittedOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: PermittedOptionsJava) = {
     if(t != null)
       new PermittedOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):PermittedOptions = {

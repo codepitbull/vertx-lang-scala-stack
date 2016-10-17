@@ -29,21 +29,21 @@ class Tty(private val _asJava: io.vertx.ext.shell.term.Tty) {
   def asJava: io.vertx.ext.shell.term.Tty = _asJava
 
   /**
-    * @return the declared tty type, for instance {@literal vt100`, {@literal xterm-256`, etc... it can be null when the tty does not have declared its type.
+    * @return the declared tty type, for instance ` vt100`, ` xterm-256`, etc... it can be null when the tty does not have declared its type.
     */
   def `type`(): String = {
     _asJava.`type`()
   }
 
   /**
-    * @return the current width, i.e the number of rows or {@literal -1` if unknown
+    * @return the current width, i.e the number of rows or ` -1` if unknown
     */
   def width(): Int = {
     _asJava.width()
   }
 
   /**
-    * @return the current height, i.e the number of columns or {@literal -1` if unknown
+    * @return the current height, i.e the number of columns or ` -1` if unknown
     */
   def height(): Int = {
     _asJava.height()

@@ -81,12 +81,15 @@ class ResultSet(val asJava: io.vertx.ext.sql.ResultSet) {
 object ResultSet {
   type ResultSetJava = io.vertx.ext.sql.ResultSet
   
+  def apply() = {
+    new ResultSet(new ResultSetJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: ResultSetJava) = {
     if(t != null)
       new ResultSet(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):ResultSet = {

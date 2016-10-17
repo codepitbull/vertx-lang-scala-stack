@@ -214,7 +214,7 @@ class MongoAuth(private val _asJava: io.vertx.ext.auth.mongo.MongoAuth) {
     */
   def insertUserFuture(username: String, password: String, roles: scala.collection.mutable.Buffer[String], permissions: scala.collection.mutable.Buffer[String]): concurrent.Future[String] = {
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.String,String]((x => x))
-    _asJava.insertUser(username, password, roles.map(x => if(x == null) null else x:java.lang.String).asJava, permissions.map(x => if(x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
+    _asJava.insertUser(username, password, roles.map(x => if (x == null) null else x:java.lang.String).asJava, permissions.map(x => if (x == null) null else x:java.lang.String).asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 

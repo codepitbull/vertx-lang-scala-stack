@@ -135,12 +135,15 @@ class JWTOptions(val asJava: io.vertx.ext.auth.jwt.JWTOptions) {
 object JWTOptions {
   type JWTOptionsJava = io.vertx.ext.auth.jwt.JWTOptions
   
+  def apply() = {
+    new JWTOptions(new JWTOptionsJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: JWTOptionsJava) = {
     if(t != null)
       new JWTOptions(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):JWTOptions = {

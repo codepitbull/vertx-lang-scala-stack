@@ -60,12 +60,15 @@ class KillFilter(val asJava: io.vertx.redis.op.KillFilter) {
 object KillFilter {
   type KillFilterJava = io.vertx.redis.op.KillFilter
   
+  def apply() = {
+    new KillFilter(new KillFilterJava(io.vertx.lang.scala.json.Json.emptyObj()))
+  }
+  
   def apply(t: KillFilterJava) = {
     if(t != null)
       new KillFilter(t)
     else
       null
-   
   }
   
   def fromJson(json: JsonObject):KillFilter = {
